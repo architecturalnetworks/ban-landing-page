@@ -1,3 +1,3 @@
 <template>
-  <span class="font-mono text-red-600">&middot;ban&nbsp;</span>
+  <span class="text-red-600 font-logo">&middot;ban&nbsp;</span>
 </template>
