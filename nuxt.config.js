@@ -49,7 +49,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~plugins/logoComponents.js'],
   /*
    ** Nuxt.js dev-modules
    */
