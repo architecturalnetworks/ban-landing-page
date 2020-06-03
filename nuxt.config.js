@@ -59,15 +59,28 @@ export default {
     // Doc: https://github.com/nuxt-community/stylelint-module
     '@nuxtjs/stylelint-module',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    // https://github.com/nuxt/components
+    '@nuxt/components',
+    [
+      '@nuxtjs/date-fns',
+      {
+        methods: ['format', 'formatDistanceToNow'],
+      },
+    ],
   ],
+  components: true,
   /*
    ** Nuxt.js modules
    */
   modules: [
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxt/content',
   ],
+  content: {
+    // Options
+  },
   /*
    ** Build configuration
    */
