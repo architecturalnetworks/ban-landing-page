@@ -1,5 +1,5 @@
 const GFONTS =
-  'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,700&family=Share+Tech&family=Share+Tech+Mono'
+  'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Share+Tech&family=Share+Tech+Mono'
 
 export default {
   mode: 'universal',

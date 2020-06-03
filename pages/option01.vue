@@ -1,16 +1,16 @@
 <template>
   <div class="w-full h-full">
     <section
-      class="px-4 py-8 sm:px-8 sm:pt-12 masthead"
+      class="px-4 py-8 sm:px-8 sm:pt-12 masthead1"
       role="img"
       aria-label="Image Description"
     >
-      <div class="flex flex-col justify-between w-full h-full mx-auto">
-        <div class="w-12">
+      <div class="flex flex-col justify-between h-full max-w-3xl mx-auto">
+        <div class="w-40">
           <logo-full />
         </div>
         <div>
-          <div class="text-lg sm:text-xl">
+          <div class="text-lg sm:text-xl md:text-2xl">
             <h1 class="font-bold">The Architecture Community in Berlin</h1>
             <p>
               Promoting architecture discussion, local activities, and
@@ -27,7 +27,7 @@
               />
               <div class="w-2 h-2" />
               <button
-                class="flex justify-between w-full h-10 p-1 font-mono text-lg tracking-wide text-white uppercase bg-red-600 shadow sm:h-12 sm:text-lg sm:w-1/3"
+                class="flex items-center justify-between w-full h-10 p-1 font-mono text-lg tracking-wide text-white uppercase bg-red-600 shadow sm:h-12 sm:text-lg sm:w-1/3"
               >
                 <span>|</span><span>join</span><span>|</span>
               </button>
@@ -43,62 +43,68 @@
     </section>
     <div class="h-12" />
     <section class="px-4 sm:px-8">
-      <p>
-        We are currently building the new
-        <logo-ban-text class="text-lg" /> website.
-        <br class="hidden lg:inline-block" />In the meantime, check our
-        <a
-          href="https://www.meetup.com/BAN-Berlin-Architectural-Network"
-          class="font-bold red"
-          >MeetUp</a
-        >
-        page or <span class="font-bold text-red-600">join</span> to stay in the
-        loop about future updates.
-      </p>
+      <div class="max-w-3xl mx-auto">
+        <p>
+          We are currently building the new
+          <logo-ban-text class="text-lg" /> website.
+          <br class="hidden lg:inline-block" />In the meantime, check our
+          <a
+            href="https://www.meetup.com/BAN-Berlin-Architectural-Network"
+            class="font-bold red"
+            >MeetUp</a
+          >
+          page or <span class="font-bold text-red-600">join</span> to stay in
+          the loop about future updates.
+        </p>
+      </div>
     </section>
     <div class="h-12" />
     <!-- EVENTS -->
     <section class="px-4 sm:px-8">
-      <div class="w-12 mb-1 border-t-2 border-red-600" />
-      <h2 class="font-bold tracking-wide uppercase">
-        Upcoming Events
-      </h2>
-      <div class="h-8" />
-      <ul class="space-y-4">
-        <li
-          v-for="event in events"
-          :key="event.slug"
-          class="flex items-start space-x-4"
-        >
-          <div class="w-12 p-1 text-center bg-red-600 sm:w-auto">
-            <p
-              class="font-mono text-sm font-semibold text-white uppercase sm:text-base"
-            >
-              {{ $dateFns.format(new Date(event.date), 'd/MMM')
-              }}<br class="sm:hidden" />
-              {{ event.time }}
-            </p>
-          </div>
-          <div>
-            <p class="font-mono">
-              <span class="text-red-600">&middot;ban</span>{{ event.type }}
-            </p>
-            <h3 class="font-bold">{{ event.title }}</h3>
-            <p>{{ event.subtitle }}</p>
-          </div>
-        </li>
-      </ul>
+      <div class="max-w-3xl mx-auto">
+        <div class="w-12 mb-1 border-t-2 border-red-600" />
+        <h2 class="font-bold tracking-wide uppercase">
+          Upcoming Events
+        </h2>
+        <div class="h-8" />
+        <ul class="space-y-4">
+          <li
+            v-for="event in events"
+            :key="event.slug"
+            class="flex items-start space-x-4"
+          >
+            <div class="flex-none w-12 p-1 text-center bg-red-600 sm:w-24">
+              <p
+                class="font-mono text-sm font-semibold text-white uppercase sm:text-base"
+              >
+                {{ $dateFns.format(new Date(event.date), 'd/MMM')
+                }}<br class="sm:hidden" />
+                {{ event.time }}
+              </p>
+            </div>
+            <div>
+              <p class="font-mono">
+                <span class="text-red-600">&middot;ban</span>{{ event.type }}
+              </p>
+              <h3 class="font-bold">{{ event.title }}</h3>
+              <p>{{ event.subtitle }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </section>
     <div class="h-12" />
     <!-- ABOUT  -->
     <section class="px-4 py-8 bg-gray-300 sm:px-8">
-      <div class="w-12 mb-1 border-t-2 border-black" />
-      <h2 class="font-bold tracking-wide uppercase">
-        About
-      </h2>
-      <div class="h-4" />
-      <div>
-        <nuxt-content :document="about" />
+      <div class="max-w-3xl mx-auto">
+        <div class="w-12 mb-1 border-t-2 border-black" />
+        <h2 class="font-bold tracking-wide uppercase">
+          About
+        </h2>
+        <div class="h-4" />
+        <div>
+          <nuxt-content :document="about" />
+        </div>
       </div>
     </section>
     <base-footer />
@@ -118,8 +124,8 @@ export default {
 }
 </script>
 
-<style>
-.masthead {
+<style scoped>
+.masthead1 {
   width: 100%;
   height: 100vh; /* if you don't want it to take up the full screen, reduce this number */
   overflow: hidden;
