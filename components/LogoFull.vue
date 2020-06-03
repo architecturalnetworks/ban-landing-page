@@ -1,9 +1,7 @@
 <template>
   <svg
     class="ban-logo"
-    width="131"
-    height="104"
-    fill="none"
+    viewBox="0 0 131 104"
     xmlns="http://www.w3.org/2000/svg"
   >
     <!-- <path fill="#fff" d="M0 0h131v104H0z" /> -->
