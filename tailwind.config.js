@@ -4,8 +4,24 @@
 ** Docs: https://tailwindcss.com/docs/configuration
 ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
 */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
-  theme: {},
-  variants: {},
-  plugins: []
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
+        mono: ['Share Tech', ...defaultTheme.fontFamily.mono],
+        logo: ['Share Tech Mono'],
+      },
+      boxShadow: {
+        focus: '0 0 0 3px rgba(236,201,75,1)',
+      },
+    },
+  },
+  variants: {
+    opacity: ['responsive', 'hover', 'focus', 'disabled'],
+    cursor: ['responsive', 'disabled'],
+  },
+  plugins: [],
 }
