@@ -16,33 +16,40 @@
         class="max-w-xl mx-auto text-lg leading-tight text-center md:text-xl"
       >
         <h1 class="font-bold">
-          The Architecture Community <br class="sm:hidden" />in Berlin
+          {{ homeCopy.title }}
         </h1>
-        <p>Promoting architecture discussion, local event, and networking</p>
-        <div class="h-6" />
-        <button
-          class="w-48 py-2 font-mono font-bold tracking-wide text-white uppercase bg-red-600 shadow"
-        >
-          JOIN
-        </button>
+        <p>{{ homeCopy.tagline }}</p>
+        <div class="h-12" />
+        <div class="max-w-sm mx-auto">
+          <form>
+            <p>
+              <input
+                class="w-full h-10 p-2 text-black bg-white border border-black shadow-inner sm:h-12 sm:text-lg"
+                type="text"
+                :placeholder="homeCopy.ctaInputPlaceholder"
+              />
+            </p>
+            <div class="w-2 h-2" />
+            <p>
+              <button
+                class="flex items-center justify-center w-full h-10 p-1 font-mono text-lg tracking-wide text-white uppercase bg-red-600 shadow sm:h-12 sm:text-lg"
+              >
+                {{ homeCopy.ctaButtonText }}
+              </button>
+            </p>
+          </form>
+          <div class="h-2" />
+          <p class="text-xs text-center sm:text-sm">
+            {{ homeCopy.ctaExplainer }}
+          </p>
+        </div>
       </section>
 
       <div class="h-12 sm:h-24" />
       <section>
         <div class="max-w-xl mx-auto">
           <div class="w-12 mb-1 border-t-2 border-red-600" />
-          <p>
-            We are currently building the new
-            <logo-ban-text class="text-lg" /> website.
-            <br class="hidden lg:inline-block" />In the meantime, check our
-            <a
-              href="https://www.meetup.com/BAN-Berlin-Architectural-Network"
-              class="font-bold red"
-              >MeetUp</a
-            >
-            page or <span class="font-bold text-red-600">join</span> to stay in
-            the loop about future updates.
-          </p>
+          <nuxt-content :document="homeCopy" />
         </div>
       </section>
       <div class="h-12" />
@@ -107,11 +114,13 @@
 <script>
 export default {
   async asyncData({ $content }) {
+    const homeCopy = await $content('homeCopy').fetch()
     const about = await $content('homeAbout').fetch()
     const events = await $content('events').fetch()
     return {
       about,
       events,
+      homeCopy,
     }
   },
 }
