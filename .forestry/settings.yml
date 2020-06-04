@@ -7,6 +7,9 @@ sections:
 - type: document
   path: content/homeCopy.md
   label: Home Copy Text
+- type: document
+  path: content/homeAbout.md
+  label: Home About Text
 - type: directory
   path: content/events
   label: Events
