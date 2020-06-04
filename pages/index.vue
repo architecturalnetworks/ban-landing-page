@@ -1,38 +1,155 @@
 <template>
-  <div class="container mx-auto">
-    <section class="p-8">
-      <logo-full />
+  <div>
+    <div class="px-4 sm:px-8">
+      <header class="pt-8 md:pt-24">
+        <div class="flex items-center justify-between md:hidden">
+          <logo-ban-text class="text-2xl" />
+          <div><icon-hamburger class="w-6 h-6" /></div>
+        </div>
+        <div class="h-8 md:hidden" />
+        <!-- HERO -->
+        <home-hero />
+      </header>
+
+      <div class="h-12 md:h-24" />
+      <section
+        class="max-w-xl mx-auto text-lg leading-tight text-center md:text-xl"
+      >
+        <h1 class="font-bold">
+          {{ homeCopy.title }}
+        </h1>
+        <p>{{ homeCopy.tagline }}</p>
+        <div class="h-12" />
+        <div class="max-w-sm mx-auto">
+          <form>
+            <p>
+              <input
+                class="w-full h-10 p-2 text-black bg-white border border-black shadow-inner sm:h-12 sm:text-lg"
+                type="text"
+                :placeholder="homeCopy.ctaInputPlaceholder"
+              />
+            </p>
+            <div class="w-2 h-2" />
+            <p>
+              <button
+                class="flex items-center justify-center w-full h-10 p-1 font-mono text-lg tracking-wide text-white uppercase bg-red-600 shadow sm:h-12 sm:text-lg"
+              >
+                {{ homeCopy.ctaButtonText }}
+              </button>
+            </p>
+          </form>
+          <div class="h-2" />
+          <p class="text-xs text-center sm:text-sm">
+            {{ homeCopy.ctaExplainer }}
+          </p>
+        </div>
+      </section>
+
+      <div class="h-12 sm:h-24" />
+      <section>
+        <div class="max-w-xl mx-auto">
+          <div class="w-12 mb-1 border-t-2 border-red-600" />
+          <nuxt-content :document="homeCopy" />
+        </div>
+      </section>
+      <div class="h-12" />
+      <!-- EVENTS -->
+      <section>
+        <div class="max-w-xl mx-auto">
+          <div class="w-12 mb-1 border-t-2 border-red-600" />
+          <div class="flex justify-between">
+            <h2 class="font-bold">
+              Events <span class="font-mono text-red-600">next</span>
+            </h2>
+            <span class="font-bold font-logo">[>]</span>
+          </div>
+          <div class="h-8" />
+          <ul class="space-y-4">
+            <li
+              v-for="event in events"
+              :key="event.slug"
+              class="flex items-start space-x-4"
+            >
+              <div
+                class="flex-none w-12 p-1 text-center cursor-pointer border-red sm:w-24 hover:text-red-600 hover:border-red-600"
+              >
+                <p
+                  class="text-sm font-semibold uppercase font-logo sm:text-base"
+                >
+                  {{ $dateFns.format(new Date(event.date), 'd/MMM')
+                  }}<br class="sm:hidden" />
+                  {{ event.time }}
+                </p>
+              </div>
+              <div>
+                <p class="font-mono">
+                  <span class="text-red-600">&middot;ban</span>{{ event.type }}
+                </p>
+                <h3 class="font-bold">{{ event.title }}</h3>
+                <p>{{ event.subtitle }}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <div class="h-16" />
+    </div>
+    <!-- ABOUT  -->
+    <section class="px-4 py-8 text-white bg-black sm:p-8">
+      <div class="max-w-xl mx-auto">
+        <!-- <div class="w-12 mb-1 border-t-2 border-white" /> -->
+        <h2 class="font-mono font-bold tracking-wide uppercase">
+          About
+        </h2>
+        <div class="h-4" />
+        <div>
+          <nuxt-content :document="about" />
+        </div>
+      </div>
     </section>
-    <div class="h-12" />
-    <section class="px-8">
-      <ul class="flex flex-col justify-center space-y-4">
-        <li class="text-center">
-          <nuxt-link to="/option01" class="font-bold red">Option 01</nuxt-link
-          ><br />
-          Full logo, form CTA
-        </li>
-        <li class="text-center">
-          <nuxt-link to="/option02" class="font-bold red">Option 02</nuxt-link
-          ><br />
-          Circle logo, form CTA
-        </li>
-        <li class="text-center">
-          <nuxt-link to="/option03" class="font-bold red">Option 03</nuxt-link
-          ><br />
-          Circle logo, button CTA
-        </li>
-        <li class="text-center">
-          <nuxt-link to="/option04" class="font-bold red">Option 04</nuxt-link
-          ><br />
-          ASCII figures
-        </li>
-      </ul>
-    </section>
+    <base-footer />
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  async asyncData({ $content }) {
+    const homeCopy = await $content('homeCopy').fetch()
+    const about = await $content('homeAbout').fetch()
+    const events = await $content('events').fetch()
+    return {
+      about,
+      events,
+      homeCopy,
+    }
+  },
+}
 </script>
 
-<style></style>
+<style>
+.masthead {
+  width: 100%;
+  height: 100vh; /* if you don't want it to take up the full screen, reduce this number */
+  overflow: hidden;
+  background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(255, 255, 255, 1) 100%
+    ),
+    url(~static/imgs/Paper-Artist-and-Engineer-Matt-Shlian.jpg) no-repeat center
+      center scroll;
+  background-size: cover, cover;
+}
+@screen sm {
+  .masthead {
+    height: 75vh;
+  }
+}
+
+@screen lg {
+  .masthead {
+    height: 100vh;
+  }
+}
+</style>
