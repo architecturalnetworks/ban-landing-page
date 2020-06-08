@@ -1,6 +1,6 @@
 ---
-
 ---
-**<span class="font-logo text-red-600">&middot;ban</span>** stands for berlin architectural network and its origin is rooted in connecting people that are passionate about architecture to share experiences in real life.
 
-**<span class="font-logo text-red-600">&middot;ban</span>** strives to constantly improve the knowledge exchange through local networking, providing members the most advanced online community platform available for architects today.
+**Berlin Architectural Network** was created as a MeetUp group in 2017 and has since attracted over hundreds of architecture lovers who come together to support each other through collaboration and networked learning.
+<br><br>
+We believe in transparency and adding value to the architecture ecosystem.

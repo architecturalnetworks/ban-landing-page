@@ -1,11 +1,11 @@
 ---
-title: The Architecture Community in Berlin
-tagline: Promoting architecture discussion, local event, and networking
+title: The Architecture Community in Berlin.
+tagline: Exchange knowledge.
 ctaInputPlaceholder: Enter your email
 ctaButtonText: JOIN
-ctaExplainer: You'll receive news about events, jobs, updates, and more. And you can unsubscribe anytime.
+ctaExplainer: By becoming part of the community, you'll receive news about events, jobs, updates, and more.
 ---
 
-We are currently building our new website.
+Our website is under construction.
 
-In the meantime, check our **[meetup](https://www.meetup.com/BAN-Berlin-Architectural-Network)** page or **join** to stay in the loop about future updates.
+In the meantime, check our **[MeetUp](https://www.meetup.com/BAN-Berlin-Architectural-Network)** page or **join** to stay in the loop about future updates.
