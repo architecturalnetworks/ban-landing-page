@@ -77,6 +77,8 @@ export default {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     '@nuxt/content',
+    'nuxt-rfg-icon',
+    '@nuxtjs/manifest',
   ],
   content: {
     // Options
