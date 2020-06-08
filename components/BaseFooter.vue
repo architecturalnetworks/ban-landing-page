@@ -2,6 +2,11 @@
   <footer class="p-6 text-white bg-black">
     <ul class="flex items-center justify-center space-x-6">
       <li>
+        <a href="mailto:berlin@architecturalnetworks.com" class="link-none"
+          ><email-icon class="w-6 h-6"
+        /></a>
+      </li>
+      <li>
         <a
           href="https://www.meetup.com/BAN-Berlin-Architectural-Network"
           class="link-none"
