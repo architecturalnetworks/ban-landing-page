@@ -48,7 +48,7 @@
         </div>
       </section>
 
-      <div class="h-12 sm:h-20" />
+      <div class="h-12 sm:h-16" />
       <section>
         <div class="max-w-xl mx-auto">
           <p class="text-center text-red-600 font-logo">&middot;</p>
@@ -58,7 +58,7 @@
           <p class="text-center text-red-600 font-logo">&middot;</p>
         </div>
       </section>
-      <div class="h-12" />
+      <div class="h-12 sm:h-16" />
       <!-- EVENTS -->
       <section>
         <div class="max-w-xl mx-auto">
@@ -80,8 +80,10 @@
                 class="flex-none w-12 text-center cursor-pointer sm:w-24 hover:text-red-600 mouse-pointer"
               >
                 <p class="text-right font-logo">
-                  {{ $dateFns.format(new Date(event.date), 'MMM do') }}<br />
-                  {{ event.time }}
+                  <a :href="event.link" class="no-underline">
+                    {{ $dateFns.format(new Date(event.date), 'MMM do') }}<br />
+                    {{ event.time }}</a
+                  >
                 </p>
               </div>
               <div>
