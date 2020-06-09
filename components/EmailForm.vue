@@ -1,15 +1,22 @@
 <template>
   <div>
     <template v-if="status === 'success'">
-      <p class="font-bold" data-cy="subscribe-success">
-        👏 Great, we'll get in touch shortly!
+      <p
+        class="p-8 text-base border border-red-600"
+        data-cy="subscribe-success"
+      >
+        Welcome to <logo-ban-text />, we are so happy to have you. You'll hear
+        from us soon!
       </p>
     </template>
     <template v-else-if="status === 'failure'">
-      <div data-cy="subscribe-failure">
-        <p class="font-bold">Oops 🙀!</p>
+      <div
+        data-cy="subscribe-failure"
+        class="p-8 text-base border border-red-600"
+      >
+        <p>Oops!</p>
         <p>
-          I'm so sorry, something went wrong on my side!
+          I'm so sorry, something went wrong on our side.
           <button class="link" @click="status = 'idle'">
             Wanna try again?
           </button>
