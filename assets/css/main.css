@@ -1,10 +1,13 @@
 a.red {
   @apply text-red-600;
 }
-a {
+a,
+.link {
   @apply underline;
 }
 a:hover,
-a:active {
+a:active,
+.link:hover,
+.link:active {
   @apply text-red-600;
 }
