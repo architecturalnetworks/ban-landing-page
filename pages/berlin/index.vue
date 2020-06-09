@@ -83,7 +83,9 @@
               <div>
                 <p>
                   Any ideas for an event?
-                  <a mailto="berlin@architecturalnetwork.com">Let us know</a>!
+                  <a href="mailto:berlin@architecturalnetworks.com"
+                    >Let us know</a
+                  >!
                 </p>
               </div>
             </li>
