@@ -8,4 +8,4 @@ ctaExplainer: By becoming part of the community, you'll receive news about event
 
 Our website is under construction.
 
-In the meantime, check our **[MeetUp](https://www.meetup.com/BAN-Berlin-Architectural-Network)** page or **join** to stay in the loop about future updates.
+In the meantime, check our **[MeetUp](https://www.meetup.com/BAN-Berlin-Architectural-Network)** page or **join**↑ to stay in the loop about future updates.
