@@ -14,6 +14,11 @@
         /></a>
       </li>
       <li>
+        <a href="https://www.linkedin.com/groups/8934350/" class="link-none"
+          ><linkedin-icon class="w-6 h-6"
+        /></a>
+      </li>
+      <li>
         <a
           href="https://www.facebook.com/groups/300241987667465/"
           class="link-none"
