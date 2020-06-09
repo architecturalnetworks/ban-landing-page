@@ -2,7 +2,7 @@
   <div
     class="flex items-center justify-center max-w-3xl mx-auto space-x-12 text-lg text-red-600 font-logo sm:text-xl"
   >
-    <home-dot :version="dotVersion" />
+    <component :is="`ban-person-${dotVersion}`" class="w-40 h-40" />
     <div class="hidden text-black md:block">
       <p>|</p>
       <p><span class="text-red-600">&middot; b</span>erlin</p>
@@ -13,14 +13,26 @@
 </template>
 
 <script>
+import BanPerson1 from '@/components/ban-people/BanPerson1'
+import BanPerson2 from '@/components/ban-people/BanPerson2'
+import BanPerson3 from '@/components/ban-people/BanPerson3'
+import BanPerson4 from '@/components/ban-people/BanPerson4'
+import BanPerson5 from '@/components/ban-people/BanPerson5'
 export default {
+  components: {
+    BanPerson1,
+    BanPerson2,
+    BanPerson3,
+    BanPerson4,
+    BanPerson5,
+  },
   data() {
     return {
       dotVersion: 0,
     }
   },
   mounted() {
-    this.dotVersion = this.getRndInteger(0, 4)
+    this.dotVersion = this.getRndInteger(1, 5)
   },
   methods: {
     getRndInteger(min, max) {
