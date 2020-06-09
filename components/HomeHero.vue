@@ -2,8 +2,8 @@
   <div
     class="flex items-center justify-center max-w-3xl mx-auto space-x-12 text-lg text-red-600 font-logo sm:text-xl"
   >
-    <component :is="`ban-person-${dotVersion}`" class="w-40 h-40" />
-    <div class="hidden text-black md:block">
+    <component :is="`ban-person-${dotVersion}`" class="w-40 h-40 ban-dot" />
+    <div class="hidden text-black md:block ban-logo">
       <p>|</p>
       <p><span class="text-red-600">&middot; b</span>erlin</p>
       <p>| <span class="text-red-600">a</span>rchitecture</p>
@@ -42,4 +42,32 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.ban-dot {
+  animation: 1s appear-left ease-out;
+}
+.ban-logo {
+  animation: 1s appear-right ease-out;
+}
+
+@keyframes appear-right {
+  0% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes appear-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+</style>
