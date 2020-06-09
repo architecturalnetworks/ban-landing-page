@@ -47,7 +47,7 @@
             <h2 class="font-bold">
               Events <span class="text-red-600 font-base font-logo">next</span>
             </h2>
-            <span class="font-logo">[&#9900;]</span>
+            <p class="font-logo">[O]</p>
           </div>
           <div class="h-8" />
           <ul class="space-y-8">
