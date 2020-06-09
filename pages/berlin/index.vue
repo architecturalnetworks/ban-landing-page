@@ -24,27 +24,7 @@
         <p>{{ homeCopy.tagline }}</p>
         <div class="h-12" />
         <div class="max-w-sm mx-auto">
-          <form>
-            <p>
-              <input
-                class="w-full h-10 p-2 text-black bg-white border border-black shadow-inner sm:h-12 sm:text-lg"
-                type="text"
-                :placeholder="homeCopy.ctaInputPlaceholder"
-              />
-            </p>
-            <div class="w-2 h-2" />
-            <p>
-              <button
-                class="flex items-center justify-center w-full h-10 p-1 text-lg tracking-wide text-white uppercase bg-red-600 shadow font-logo sm:h-12 sm:text-lg"
-              >
-                {{ homeCopy.ctaButtonText }}
-              </button>
-            </p>
-          </form>
-          <div class="h-2" />
-          <p class="text-xs text-center sm:text-sm">
-            {{ homeCopy.ctaExplainer }}
-          </p>
+          <email-form :text="homeCopy" />
         </div>
       </section>
 
@@ -67,7 +47,7 @@
             <h2 class="font-bold">
               Events <span class="text-red-600 font-base font-logo">next</span>
             </h2>
-            <span class="font-logo">[&#9900;]</span>
+            <p class="font-logo">[O]</p>
           </div>
           <div class="h-8" />
           <ul class="space-y-8">
