@@ -1,7 +1,7 @@
 const crypto = require('crypto')
 const axios = require('axios')
 
-const apiRoot = 'https://us15.api.mailchimp.com/3.0/lists/c212cae123/members/'
+const apiRoot = 'https://us18.api.mailchimp.com/3.0/lists/c212cae123/members/'
 
 exports.handler = async (event) => {
   try {
