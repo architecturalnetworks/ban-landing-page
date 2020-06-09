@@ -6,7 +6,7 @@
     <div class="hidden text-black md:block ban-logo">
       <p>|</p>
       <p><span class="text-red-600">&middot; b</span>erlin</p>
-      <p>| <span class="text-red-600">a</span>rchitecture</p>
+      <p>| <span class="text-red-600">a</span>rchitectural</p>
       <p>| <span class="text-red-600">n</span>etwork</p>
     </div>
   </div>
