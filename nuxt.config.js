@@ -7,7 +7,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: 'BAN - Berlin Architectural Network' || '',
+    title: '·ban | berlin architectural network' || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
