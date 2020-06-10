@@ -45,7 +45,8 @@
           <!-- <div class="w-12 mb-1 border-t-2 border-red-600" /> -->
           <div class="flex justify-between">
             <h2 class="font-bold">
-              Events <span class="text-red-600 font-base font-logo">next</span>
+              Events
+              <span class="font-normal text-red-600 font-logo">next</span>
             </h2>
             <p class="font-logo">[O]</p>
           </div>
@@ -100,7 +101,7 @@
         <!-- <div class="w-12 mb-1 border-t-2 border-white" /> -->
         <h2 class="font-bold">
           About
-          <span class="text-red-600 font-base font-logo">&middot;ban</span>
+          <span class="font-normal text-red-600 font-logo">&middot;ban</span>
         </h2>
         <div class="h-4" />
         <div>
@@ -115,9 +116,18 @@
 <script>
 export default {
   async asyncData({ $content }) {
+    const today = new Date()
+    const yesterday = new Date(today)
+    yesterday.setDate(yesterday.getDate() - 1)
+
     const homeCopy = await $content('homeCopy').fetch()
     const about = await $content('homeAbout').fetch()
-    const events = await $content('events').fetch()
+    const events = await $content('events')
+      .where({
+        publish: true,
+        date: { $gt: yesterday },
+      })
+      .fetch()
     return {
       about,
       events,
