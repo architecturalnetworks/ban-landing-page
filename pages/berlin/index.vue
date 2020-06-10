@@ -115,9 +115,18 @@
 <script>
 export default {
   async asyncData({ $content }) {
+    const today = new Date()
+    const yesterday = new Date(today)
+    yesterday.setDate(yesterday.getDate() - 1)
+
     const homeCopy = await $content('homeCopy').fetch()
     const about = await $content('homeAbout').fetch()
-    const events = await $content('events').fetch()
+    const events = await $content('events')
+      .where({
+        publish: true,
+        date: { $gt: yesterday },
+      })
+      .fetch()
     return {
       about,
       events,
