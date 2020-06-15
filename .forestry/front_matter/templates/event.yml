@@ -1,0 +1,25 @@
+---
+label: Event
+hide_body: false
+fields:
+- type: text
+  name: type
+  label: type
+- type: text
+  name: title
+  label: title
+- type: text
+  name: subtitle
+  label: subtitle
+- type: datetime
+  name: date
+  label: date
+- type: text
+  name: time
+  label: time
+- type: text
+  name: link
+  label: link
+- type: boolean
+  name: publish
+  label: publish
