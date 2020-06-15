@@ -1,24 +1,28 @@
 <template>
   <div>
     <div class="px-4 sm:px-8">
-      <header class="pt-8 md:pt-24">
-        <!-- <div class="flex items-center justify-between md:hidden">
-          <logo-ban-text class="text-2xl" />
-          <div>
+      <header class="max-w-xl pt-8 mx-auto">
+        <nav class="flex items-start justify-between">
+          <logo-full-text class="mb-8 text-lg md:hidden" />
+          <logo-ban-text class="hidden text-2xl md:block" />
+          <!-- <div>
             <icon-hamburger class="w-6 h-6" />
-          </div>
-        </div> -->
-        <div class="h-8 md:hidden" />
+          </div> -->
+          <ul class="font-bold">
+            <li><nuxt-link to="events">events</nuxt-link></li>
+          </ul>
+        </nav>
+        <div class="h-8 md:h-20" />
         <!-- HERO -->
         <home-hero />
       </header>
 
-      <div class="h-12 md:h-24" />
+      <div class="h-12 md:h-20" />
       <section
         class="max-w-xl mx-auto text-lg leading-tight text-center md:text-xl"
       >
         <h1 class="font-bold">
-          <span class="text-red-600 font-logo">&middot;ban </span
+          <span class="text-red-600 font-logo md:hidden">&middot;ban </span
           >{{ homeCopy.title }}
         </h1>
         <p>{{ homeCopy.tagline }}</p>
@@ -68,6 +72,7 @@
                 </p>
               </div>
               <div>
+                <img :src="`~/assets/img/events/${event.image}`" class="w-16" />
                 <p class="-ml-2 font-logo">
                   <span class="text-red-600">&middot;ban</span>{{ event.type }}
                 </p>
