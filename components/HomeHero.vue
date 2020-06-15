@@ -26,7 +26,7 @@ export default {
   },
   data() {
     return {
-      dotVersion: 0,
+      dotVersion: this.getRndInteger(1, 5),
     }
   },
   methods: {
