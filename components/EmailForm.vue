@@ -92,7 +92,7 @@ export default {
       const url = `${NETLIFY_MC_FUNCTION}?email=${encodeURIComponent(
         this.email
       )}&tag=landing-page`
-      console.log(url)
+      // console.log(url)
       try {
         const res = await fetch(url)
         if (res.status !== 200) {
@@ -100,6 +100,7 @@ export default {
         }
         this.status = 'success'
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.error(e)
         this.status = 'failure'
       }
