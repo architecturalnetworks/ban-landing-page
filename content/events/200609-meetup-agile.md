@@ -2,13 +2,14 @@
 type: talks
 title: Agile Architecture
 subtitle: Live presentation and discussion with Martin Raasch
-date: 2020-06-09T18:30:00+02:00
+date: 2020-06-09T18:30:00.000+02:00
+time: '18:30'
 link: https://www.meetup.com/BAN-Berlin-Architectural-Network/events/268922841/
 publish: true
 meetupURL: https://www.meetup.com/BAN-Berlin-Architectural-Network/events/268922841/
-image: '/uploads/linkedin-post.png'
----
+image: "/uploads/linkedin-post.png"
 
+---
 Have you ever heard of **Agile Management**?
 
 Agile practices have been known to the tech world for a long time now. Several frameworks such as Scrum, Kanban, or XP have been developed in order to manage the workflow of complex software projects.
