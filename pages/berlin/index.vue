@@ -109,7 +109,6 @@
         </div>
       </div>
     </section>
-    <base-footer />
   </div>
 </template>
 
