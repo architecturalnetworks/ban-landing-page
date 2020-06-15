@@ -141,30 +141,4 @@ export default {
 }
 </script>
 
-<style>
-.masthead {
-  width: 100%;
-  height: 100vh; /* if you don't want it to take up the full screen, reduce this number */
-  overflow: hidden;
-  background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.25) 0%,
-      rgba(255, 255, 255, 0.25) 0%,
-      rgba(255, 255, 255, 1) 100%
-    ),
-    url(~static/imgs/Paper-Artist-and-Engineer-Matt-Shlian.jpg) no-repeat center
-      center scroll;
-  background-size: cover, cover;
-}
-@screen sm {
-  .masthead {
-    height: 75vh;
-  }
-}
-
-@screen lg {
-  .masthead {
-    height: 100vh;
-  }
-}
-</style>
+<style></style>
