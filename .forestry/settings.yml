@@ -20,8 +20,8 @@ sections:
 - type: document
   path: content/homeAbout.md
   label: Home About Text
-upload_dir: media
-public_path: media
+upload_dir: forestry/uploads
+public_path: forestry/uploads
 front_matter_path: ''
 use_front_matter_path: 
 file_template: ":filename:"
