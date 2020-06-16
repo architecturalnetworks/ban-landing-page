@@ -7,7 +7,7 @@ time: '18:30'
 link: https://www.meetup.com/BAN-Berlin-Architectural-Network/events/268922841/
 publish: true
 meetupURL: https://www.meetup.com/BAN-Berlin-Architectural-Network/events/268922841/
-image: "/uploads/linkedin-post.png"
+image: assets/uploads/linkedin-post.png
 
 ---
 Have you ever heard of **Agile Management**?
