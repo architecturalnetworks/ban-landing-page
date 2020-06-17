@@ -7,6 +7,9 @@ subtitle: In times when every architect is working from home, will remote workin
 image: assets/uploads/200430-remote-1.jpg
 meetupURL: https://www.meetup.com/BAN-Berlin-Architectural-Network/events/270084232/
 publish: true
+summary: What part of our jobs work and don't work in a remote setting? What tools
+  are people using to get the work done? What are the best advantages of working from
+  home? What are the biggest issues?
 
 ---
 The current crisis is forcing architects all over the world to work remotely for the first time.

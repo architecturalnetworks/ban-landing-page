@@ -8,6 +8,9 @@ link: https://www.meetup.com/BAN-Berlin-Architectural-Network/events/268922841/
 publish: true
 meetupURL: https://www.meetup.com/BAN-Berlin-Architectural-Network/events/268922841/
 image: assets/uploads/200609-agile.png
+summary: Agile practices have been known to the tech world for a long time now. Several
+  frameworks such as Scrum, Kanban, or XP have been developed in order to manage the
+  workflow of complex software projects. So, how can we apply it to architecture?
 
 ---
 Have you ever heard of **Agile Management**?
