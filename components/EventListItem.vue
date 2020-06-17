@@ -1,10 +1,11 @@
 <template>
-  <article class="bg-white shadow">
+  <article class="h-40 bg-white shadow sm:h-56">
     <div id="image" class="">
       <img class="object-cover w-full h-full" :src="image" />
     </div>
-    <div class="py-4 pr-4">
-      <div class="flex justify-between mb-4 font-logo">
+
+    <div class="flex flex-col py-2 pr-2 sm:py-4 sm:pr-4">
+      <div class="flex justify-between sm:mb-2 font-logo">
         <p>
           <span class="-ml-2 text-red-600">&middot;ban</span>{{ event.type }}
         </p>
@@ -25,11 +26,11 @@
             >{{ event.title }}</a
           >
         </h3>
-        <p class="mb-4 text-sm">{{ event.subtitle }}</p>
-        <p class="text-xs tracking-wide text-gray-600 uppercase">
-          Online Event · 17+ atendees
-        </p>
+        <p class="hidden mb-4 text-sm sm:block">{{ event.subtitle }}</p>
       </div>
+      <p class="mt-auto text-xs tracking-wide text-gray-600 uppercase">
+        Online Event · 17+ attendees
+      </p>
     </div>
   </article>
 </template>
