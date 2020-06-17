@@ -1,10 +1,10 @@
 ---
-date: 2020-04-30T18:30:00+02:00
+date: 2020-04-30T18:30:00.000+02:00
 type: talks
 title: Remote Work in Architecture
 subtitle: In times when every architect is working from home, will remote working
   finally find a place in our profession?
-image: assets/uploads/600_490208218.jpeg
+image: assets/uploads/200430-remote-1.jpg
 meetupURL: https://www.meetup.com/BAN-Berlin-Architectural-Network/events/270084232/
 publish: true
 
