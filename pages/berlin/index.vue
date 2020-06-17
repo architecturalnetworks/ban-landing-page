@@ -9,7 +9,7 @@
             <icon-hamburger class="w-6 h-6" />
           </div> -->
           <ul class="font-bold">
-            <li><nuxt-link to="events">events</nuxt-link></li>
+            <li><nuxt-link to="berlin/events">events</nuxt-link></li>
           </ul>
         </nav>
         <div class="h-8 md:h-20" />
