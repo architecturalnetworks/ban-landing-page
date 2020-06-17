@@ -34,5 +34,17 @@ fields:
 - type: boolean
   name: publish
   label: Publish?
+- name: summary
+  type: textarea
+  default: ''
+  config:
+    required: true
+    wysiwyg: false
+    schema:
+      format: markdown
+    max: 280
+    min: 100
+  label: Summary
+  description: Max. 280 characters.
 pages:
 - content/events/remote-work-in-architecture.md
