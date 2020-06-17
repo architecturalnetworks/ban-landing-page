@@ -26,16 +26,26 @@ fields:
 - name: onlineEvent
   type: boolean
   label: Online Event?
-- name: image
-  type: file
-  config:
-    maxSize: 64
-  label: Featured Image
 - name: location
   type: text
   config:
     required: false
   label: Location
+  showOnly:
+    field: onlineEvent
+- name: onlineEventLink
+  type: text
+  config:
+    required: false
+  label: Online Event Link
+  showOnly:
+    field: onlineEvent
+    value: true
+- name: image
+  type: file
+  config:
+    maxSize: 64
+  label: Featured Image
 - name: summary
   type: textarea
   default: ''
