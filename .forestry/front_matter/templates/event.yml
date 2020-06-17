@@ -29,8 +29,8 @@ fields:
     maxSize: 64
   label: Featured Image
 - type: text
-  name: meetupURL
-  label: MeetUp URL
+  name: meetupId
+  label: MeetUp ID
 - type: boolean
   name: publish
   label: Publish?

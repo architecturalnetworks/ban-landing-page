@@ -11,6 +11,7 @@ image: assets/uploads/200609-agile.png
 summary: Agile practices have been known to the tech world for a long time now. Several
   frameworks such as Scrum, Kanban, or XP have been developed in order to manage the
   workflow of complex software projects. So, how can we apply it to architecture?
+meetupId: "268922841"
 
 ---
 Have you ever heard of **Agile Management**?
