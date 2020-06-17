@@ -9,7 +9,10 @@
           <span class="-ml-2 text-red-600">&middot;ban</span>{{ event.type }}
         </p>
         <p>
-          <a :href="event.meetupURL" class="no-underline">
+          <a
+            :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
+            class="no-underline"
+          >
             {{ $dateFns.format(new Date(event.date), 'MMM do') }}</a
           >
         </p>
@@ -17,7 +20,10 @@
 
       <div id="text">
         <h3 class="font-bold">
-          <a :href="event.meetupURL">{{ event.title }}</a>
+          <a
+            :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
+            >{{ event.title }}</a
+          >
         </h3>
         <p class="mb-4 text-sm">{{ event.subtitle }}</p>
         <p class="text-xs tracking-wide text-gray-600 uppercase">
