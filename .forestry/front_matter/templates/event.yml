@@ -75,4 +75,5 @@ fields:
   name: publish
   label: Publish?
 pages:
+- content/events/humanitarian-work.md
 - content/events/remote-work-in-architecture.md
