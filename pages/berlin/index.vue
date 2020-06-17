@@ -54,48 +54,8 @@
             </h2>
             <p class="font-logo">[O]</p>
           </div>
-          <div class="h-8" />
-          <ul class="space-y-8">
-            <li
-              v-for="event in events"
-              :key="event.slug"
-              class="flex items-start space-x-4"
-            >
-              <div
-                class="flex-none w-12 text-center cursor-pointer sm:w-24 hover:text-red-600 mouse-pointer"
-              >
-                <p class="text-right font-logo">
-                  <a :href="event.link" class="no-underline">
-                    {{ $dateFns.format(new Date(event.date), 'MMM do') }}<br />
-                    {{ event.time }}</a
-                  >
-                </p>
-              </div>
-              <div>
-                <img :src="`~/assets/img/events/${event.image}`" class="w-16" />
-                <p class="-ml-2 font-logo">
-                  <span class="text-red-600">&middot;ban</span>{{ event.type }}
-                </p>
-                <h3 class="font-bold">
-                  <a :href="event.link">{{ event.title }}</a>
-                </h3>
-                <p>{{ event.subtitle }}</p>
-              </div>
-            </li>
-            <li class="flex items-start space-x-4">
-              <div
-                class="flex-none w-12 text-center cursor-pointer sm:w-24 hover:text-red-600 mouse-pointer"
-              ></div>
-              <div>
-                <p>
-                  Any ideas for an event?
-                  <a href="mailto:berlin@architecturalnetworks.com"
-                    >Let us know</a
-                  >!
-                </p>
-              </div>
-            </li>
-          </ul>
+          <div class="h-4" />
+          <event-list-home :events="events" />
         </div>
       </section>
       <div class="h-16" />
