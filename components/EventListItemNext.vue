@@ -15,7 +15,7 @@
         >
       </p>
     </div>
-    <div id="text" class="pt-2">
+    <div id="text" class="py-6 pr-6">
       <p class="-ml-2 font-logo">
         <span class="text-red-600">&middot;ban</span>{{ event.type }}
       </p>
@@ -23,9 +23,12 @@
         <a :href="event.meetupURL">{{ event.title }}</a>
       </h3>
       <p>{{ event.subtitle }}</p>
-      <!-- <div v-if="showText" class="h-4" />
-      <nuxt-content v-if="showText" :document="event" /> -->
       <div class="h-4" />
+      <p>{{ event.summary }}</p>
+      <div class="h-4" />
+      <p class="text-right font-logo">
+        <nuxt-link to="berlin/events">read more ></nuxt-link>
+      </p>
     </div>
     <div id="ban-people" class="hidden text-red-600 font-logo">
       ( Help, job application!) v v [] [] /-- &lt;\/&gt; [*] \ / \
@@ -56,7 +59,7 @@ export default {
 <style scoped>
 article {
   display: grid;
-  grid-template-columns: 1rem 100px 1rem 1fr;
+  grid-template-columns: 1.5rem 100px 1rem 1fr;
   grid-template-rows: repeat(2, 100px) 1rem 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
