@@ -1,7 +1,9 @@
 <template>
-  <div class="w-full h-full">
-    <div class="max-w-xl px-4 pt-8 mx-auto sm:px-8">
-      <header class="flex items-center justify-between">
+  <div class="w-full h-full bg-gray-100">
+    <div class="bg-white">
+      <header
+        class="flex items-center justify-between max-w-2xl px-4 py-4 mx-auto sm:px-8"
+      >
         <logo-ban-text class="text-2xl" />
         <nav>
           <ul class="font-bold">
@@ -9,7 +11,9 @@
           </ul>
         </nav>
       </header>
-      <div class="h-8 md:h-20" />
+    </div>
+    <div class="max-w-2xl px-4 mx-auto sm:px-8">
+      <div class="h-8" />
       <main class="flex-1">
         <nuxt />
       </main>
