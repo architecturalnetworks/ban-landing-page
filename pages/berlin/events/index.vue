@@ -6,11 +6,11 @@
     <div class="h-8" />
     <event-list-item-next :event="futureEvents[0]" />
     <event-list v-if="futureEvents.length > 1" :events="futureEvents" />
-    <div class="h-10" />
+    <div class="h-12" />
     <h2 class="text-2xl font-bold">
       Events<span class="font-normal text-red-600 font-logo"> past</span>
     </h2>
-    <div class="h-8" />
+    <div class="h-6" />
     <event-list :events="pastEvents" />
     <div class="h-8" />
   </div>
