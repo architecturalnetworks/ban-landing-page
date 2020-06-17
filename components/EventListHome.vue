@@ -6,6 +6,7 @@
         <event-list-item :event="event" />
       </li>
     </ul>
+    <div class="h-8" />
     <p class="pl-4">
       Any ideas for an event?
       <a href="mailto:berlin@architecturalnetworks.com">Let us know</a>!
