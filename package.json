@@ -27,6 +27,7 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "nuxt": "^2.12.2",
     "nuxt-rfg-icon": "^0.6.4",
+    "vue-clamp": "^0.3.0",
     "vue-spinner": "^1.0.3",
     "xstate": "^4.10.0"
   },

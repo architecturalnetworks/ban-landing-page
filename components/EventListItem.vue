@@ -26,7 +26,11 @@
             >{{ event.title }}</a
           >
         </h3>
-        <p class="hidden mb-4 text-sm sm:block">{{ event.subtitle }}</p>
+        <div class="hidden sm:block">
+          <p class="text-sm">
+            <v-clamp autoresize :max-lines="2">{{ event.subtitle }}</v-clamp>
+          </p>
+          <div class="h-4" />
       </div>
       <p class="mt-auto text-xs tracking-wide text-gray-600 uppercase">
         Online Event · 17+ attendees
