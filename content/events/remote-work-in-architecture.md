@@ -11,6 +11,8 @@ summary: What part of our jobs work and don't work in a remote setting? What too
   are people using to get the work done? What are the best advantages of working from
   home? What are the biggest issues?
 meetupId: "270084232"
+onlineEvent: true
+location: ''
 
 ---
 The current crisis is forcing architects all over the world to work remotely for the first time.
