@@ -1,6 +1,6 @@
 <template>
   <article class="bg-white shadow">
-    <div id="image" class="border border-black">
+    <div id="image" class="">
       <img class="object-cover w-full h-full" :src="image" />
     </div>
     <div class="py-4 pr-4">
