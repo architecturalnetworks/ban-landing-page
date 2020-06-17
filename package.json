@@ -27,7 +27,8 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "nuxt": "^2.12.2",
     "nuxt-rfg-icon": "^0.6.4",
-    "vue-spinner": "^1.0.3"
+    "vue-spinner": "^1.0.3",
+    "xstate": "^4.10.0"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^2.0.0",
