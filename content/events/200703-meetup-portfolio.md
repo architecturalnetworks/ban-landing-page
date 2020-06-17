@@ -11,6 +11,7 @@ summary: On our next Meetup we would love to help you redesign your architecture
   We'll start by giving you an 101 introduction, showing you a case study and then
   applying the core principles by adjusting your portfolio live on screen.
 meetupId: "269017036"
+onlineEvent: true
 
 ---
 You may well know as an architect how painful the process of finding a job can be. In most cases, the decision on whether or not to invite someone to an interview, is made within first seconds of looking at a portfolio. The thing about it is, once you do it right, you will thrive!
