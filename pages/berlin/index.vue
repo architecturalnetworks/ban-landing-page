@@ -43,23 +43,27 @@
         </div>
       </section>
       <div class="h-12 sm:h-16" />
-      <!-- EVENTS -->
-      <section>
-        <div class="max-w-xl mx-auto">
-          <!-- <div class="w-12 mb-1 border-t-2 border-red-600" /> -->
-          <div class="flex justify-between">
-            <h2 class="font-bold">
-              Events
-              <span class="font-normal text-red-600 font-logo">next</span>
-            </h2>
-            <p class="font-logo">[O]</p>
-          </div>
-          <div class="h-4" />
-          <event-list-home :events="events" />
-        </div>
-      </section>
-      <div class="h-16" />
     </div>
+    <!-- EVENTS -->
+    <section class="px-4 py-8 bg-gray-100 sm:p-8">
+      <div class="max-w-xl mx-auto">
+        <!-- <div class="w-12 mb-1 border-t-2 border-red-600" /> -->
+        <div class="flex justify-between">
+          <h2 class="font-bold">
+            <nuxt-link to="/berlin/events" class="no-underline"
+              >Events</nuxt-link
+            >
+            <span class="font-normal text-red-600 font-logo">next</span>
+          </h2>
+          <p class="font-logo">
+            <nuxt-link to="/berlin/events" class="no-underline">[>]</nuxt-link>
+          </p>
+        </div>
+        <div class="h-4" />
+        <event-list-home :events="events" />
+      </div>
+      <div class="h-16" />
+    </section>
     <!-- ABOUT  -->
     <section class="px-4 py-8 text-white bg-black sm:p-8">
       <div class="max-w-xl mx-auto">
