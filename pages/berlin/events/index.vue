@@ -4,18 +4,18 @@
       Events<span class="font-normal text-red-600 font-logo"> next</span>
     </h1>
     <div class="h-8" />
-    <event-list-item-next :event="futureEvents[0]" />
-    <event-list v-if="futureEvents.length > 1" :events="futureEvents" />
+    <template v-if="futureEvents">
+      <event-list-item-next :event="futureEvents[0]" />
+      <event-list v-if="futureEvents.length > 1" :events="futureEvents" />
+    </template>
     <div class="h-12" />
     <h2 class="text-2xl font-bold">
       Events<span class="font-normal text-red-600 font-logo"> past</span>
     </h2>
     <div class="h-6" />
-    <div class="md:flex">
+    <div class="">
       <aside>
-        <ul
-          class="flex justify-end space-x-4 text-sm text-gray-600 md:flex-col md:pt-4 md:space-x-0 md:space-y-6 md:w-16 lg:w-40 font-logo"
-        >
+        <ul class="flex justify-end space-x-4 text-sm text-gray-600 font-logo">
           <li v-for="year in years" :key="year">
             <button
               class="cursor-pointer hover:underline focus:outline-none focus:underline"
@@ -28,7 +28,9 @@
         </ul>
         <div class="h-4" />
       </aside>
-      <event-list :events="yearEvents" />
+      <template v-if="yearEvents">
+        <event-list :events="yearEvents" />
+      </template>
     </div>
     <div class="h-8" />
   </div>
