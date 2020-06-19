@@ -1,5 +1,5 @@
 ---
-title: The Architecture Community in Berlin.
+title: The architecture community in Berlin.
 tagline: Exchange knowledge.
 ctaInputPlaceholder: Enter your email
 ctaButtonText: JOIN
