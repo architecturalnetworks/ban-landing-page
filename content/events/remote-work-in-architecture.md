@@ -4,7 +4,7 @@ type: talks
 title: Remote Work in Architecture
 subtitle: In times when every architect is working from home, will remote working
   finally find a place in our profession?
-image: assets/uploads/200430-remote-1.jpg
+image: "/v1592579008/ban/img/200430-remote_zwsltp.jpg"
 meetupURL: https://www.meetup.com/BAN-Berlin-Architectural-Network/events/270084232/
 publish: true
 summary: What part of our jobs work and don't work in a remote setting? What tools
