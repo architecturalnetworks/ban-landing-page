@@ -76,6 +76,7 @@ fields:
   label: Publish?
 pages:
 - content/events/doomsday-architecture.md
+- content/events/get-back-together.md
 - content/events/humanitarian-work.md
 - content/events/remote-work-in-architecture.md
 - content/events/walking-through-walls.md
