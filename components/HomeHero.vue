@@ -6,7 +6,7 @@
       <component :is="`ban-person-${dotVersion}`" class="w-40 h-40" />
     </div>
     <div v-else class="w-40" />
-    <logo-full-text class="hidden text-black md:block ban-logo" />
+    <!-- <logo-full-text class="hidden text-black md:block ban-logo" /> -->
   </div>
 </template>
 
