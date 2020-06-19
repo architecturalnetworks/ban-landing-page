@@ -1,5 +1,5 @@
 ---
-date: 2019-10-30T19:00:00+01:00
+date: 2019-10-30T19:00:00.000+01:00
 attendees: 9
 type: networking
 title: Doomsday Architecture
@@ -8,7 +8,7 @@ subtitle: hat if we knew for sure that in 2020 the society will collapse into ch
 onlineEvent: false
 location: The Castle
 onlineEventLink: ''
-image: assets/uploads/600_486053551.jpeg
+image: "/v1592579160/ban/img/600_486053551_cmm10l.jpg"
 summary: In the USA more and more wealthy citizens are preparing for a doomsday scenario
   by building underground bunkers and other protective structures to defend themselves
   from the collapse of society. Let's meet and have a fun discussion.
