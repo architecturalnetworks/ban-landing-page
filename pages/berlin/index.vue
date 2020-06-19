@@ -22,7 +22,7 @@
         class="max-w-xl mx-auto text-lg leading-tight text-center md:text-xl"
       >
         <h1 class="font-bold">
-          <span class="text-red-600 font-logo md:hidden">&middot;ban </span
+          <span class="text-red-600 font-logo">&middot;ban </span
           >{{ homeCopy.title }}
         </h1>
         <p>{{ homeCopy.tagline }}</p>
