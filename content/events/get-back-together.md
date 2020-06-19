@@ -1,5 +1,5 @@
 ---
-date: 2020-06-30T18:30:02+02:00
+date: 2020-06-30T18:30:02.000+02:00
 attendees: 10
 type: networking
 title: Get back together!
@@ -7,7 +7,7 @@ subtitle: Let's get social at the Biergarten
 onlineEvent: false
 location: James June Biergarten
 onlineEventLink: ''
-image: assets/uploads/200630-biergarten.png
+image: "/v1592579006/ban/img/200630-biergarten_mvwjvr.png"
 summary: It's time to get back together! On June the 30th we would like to gather
   a small group in a safe event environment. We will meet outdoors in a Biergarten
   and mantain the required 1.5m distance between everyone so that you can feel safe
