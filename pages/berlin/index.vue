@@ -1,17 +1,8 @@
 <template>
   <div>
     <div class="px-4 sm:px-8">
-      <header class="max-w-xl pt-8 mx-auto">
-        <nav class="flex items-start justify-between">
-          <logo-full-text class="mb-8 text-lg md:hidden" />
-          <logo-ban-text class="hidden text-2xl md:block" />
-          <!-- <div>
-            <icon-hamburger class="w-6 h-6" />
-          </div> -->
-          <ul class="font-bold">
-            <li><nuxt-link to="berlin/events">events</nuxt-link></li>
-          </ul>
-        </nav>
+      <header class="max-w-xl pt-4 mx-auto">
+        <nav-bar />
         <div class="h-8 md:h-20" />
         <!-- HERO -->
         <home-hero />
