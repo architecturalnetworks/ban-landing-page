@@ -20,10 +20,10 @@ sections:
 - type: document
   path: content/homeAbout.md
   label: Home About Text
-upload_dir: assets/uploads
-public_path: assets/uploads
+upload_dir: ban/img
+public_path: https://res.cloudinary.com/architecturalnetworks/ban/img
 front_matter_path: ''
-use_front_matter_path: 
+use_front_matter_path: true
 file_template: ":filename:"
 build:
   preview_output_directory: dist
