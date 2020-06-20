@@ -52,8 +52,13 @@
         </div>
         <div class="h-4" />
         <event-list-home :events="events" />
+        <div class="h-8" />
+        <p class="pl-4">
+          Any ideas for an event?
+          <a href="mailto:berlin@architecturalnetworks.com">Let us know!</a>
+        </p>
       </div>
-      <div class="h-16" />
+      <div class="h-8" />
     </section>
     <!-- ABOUT  -->
     <section class="px-4 py-8 text-white bg-black sm:p-8">
