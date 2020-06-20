@@ -74,6 +74,20 @@ fields:
 - type: boolean
   name: publish
   label: Publish?
+- name: status
+  type: select
+  default: Future
+  config:
+    required: true
+    options:
+    - Future
+    - Past
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Status
 pages:
 - content/events/doomsday-architecture.md
 - content/events/get-back-together.md
