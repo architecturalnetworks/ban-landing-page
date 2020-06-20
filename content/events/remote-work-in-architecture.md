@@ -15,6 +15,7 @@ onlineEvent: true
 location: ''
 onlineEventLink: ''
 attendees: 17
+status: Past
 
 ---
 The current crisis is forcing architects all over the world to work remotely for the first time.
