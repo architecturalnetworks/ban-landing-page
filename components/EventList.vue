@@ -1,10 +1,6 @@
 <template>
-  <ul class="space-y-4">
-    <li
-      v-for="event in events"
-      :key="event.slug"
-      class="h-40 overflow-hidden bg-white shadow sm:h-56"
-    >
+  <ul>
+    <li v-for="event in events" :key="event.slug">
       <event-list-item :event="event" />
     </li>
   </ul>
@@ -21,4 +17,11 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+ul {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: 200px;
+}
+</style>
