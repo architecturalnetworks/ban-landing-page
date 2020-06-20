@@ -14,6 +14,7 @@ summary: On our next meetup we're going to an exhibition, which explores the con
   to it?
 meetupId: "265949982"
 publish: true
+status: Past
 
 ---
 Dear BAN-Members,
