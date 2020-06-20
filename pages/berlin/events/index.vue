@@ -45,20 +45,17 @@
 export default {
   layout: 'pages',
   async asyncData({ $content }) {
-    const today = new Date()
-    const yesterday = new Date(today)
-    yesterday.setDate(yesterday.getDate() - 1)
     const futureEvents = await $content('events')
       .where({
         publish: true,
-        date: { $gt: yesterday },
+        status: 'Future',
       })
       .sortBy('date')
       .fetch()
     const pastEvents = await $content('events')
       .where({
         publish: true,
-        date: { $lt: today },
+        status: 'Past',
       })
       .sortBy('date', 'desc')
       .fetch()
