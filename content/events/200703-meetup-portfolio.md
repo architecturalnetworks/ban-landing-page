@@ -13,6 +13,7 @@ summary: On our next Meetup we would love to help you redesign your architecture
 meetupId: "269017036"
 onlineEvent: true
 onlineEventLink: https://us02web.zoom.us/j/85070256601
+status: Future
 
 ---
 You may well know as an architect how painful the process of finding a job can be. In most cases, the decision on whether or not to invite someone to an interview, is made within first seconds of looking at a portfolio. The thing about it is, once you do it right, you will thrive!
