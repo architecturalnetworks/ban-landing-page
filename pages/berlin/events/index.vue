@@ -1,43 +1,54 @@
 <template>
   <div>
-    <h1 class="text-4xl font-bold">
-      Events<span class="font-normal text-red-600 font-logo"> next</span>
-    </h1>
-    <div class="h-8" />
-    <template v-if="futureEvents">
-      <event-list-item-next :event="futureEvents[0]" />
-      <event-list v-if="futureEvents.length > 1" :events="futureEvents" />
-    </template>
+    <section>
+      <h1 class="text-4xl font-bold">
+        Events<span class="font-normal text-red-600 font-logo"> next</span>
+      </h1>
+      <div class="h-6" />
+      <template v-if="futureEvents">
+        <event-list-item-next :event="futureEvents[0]" image-size="large" />
+        <div class="h-4" />
+        <event-list
+          v-if="futureEvents.length > 1"
+          :events="futureEvents.slice(1)"
+        />
+      </template>
       <div class="h-8" />
       <p class="pl-4">
         Any ideas for an event?
         <a href="mailto:berlin@architecturalnetworks.com">Let us know!</a>
       </p>
       <div class="h-12" />
-    <h2 class="text-2xl font-bold">
-      Events<span class="font-normal text-red-600 font-logo"> past</span>
-    </h2>
-    <div class="h-6" />
-    <div class="">
-      <aside>
-        <ul class="flex justify-end space-x-4 text-sm text-gray-600 font-logo">
-          <li v-for="year in years" :key="year">
-            <button
-              class="cursor-pointer hover:underline focus:outline-none focus:underline"
-              :class="{ 'underline text-black': year === selectedYear }"
-              @click="loadEvents(year)"
-            >
-              {{ year }}
-            </button>
-          </li>
-        </ul>
-        <div class="h-4" />
-      </aside>
-      <template v-if="yearEvents">
-        <event-list :events="yearEvents" />
-      </template>
-    </div>
-    <div class="h-8" />
+    </section>
+    <section class="bg-gray-100 full-width">
+      <div class="max-w-4xl px-4 mx-auto sm:px-8">
+        <div class="h-10" />
+        <h2 class="text-2xl font-bold">
+          Events<span class="font-normal text-red-600 font-logo"> past</span>
+        </h2>
+        <div class="h-2" />
+        <div class="">
+          <aside>
+            <ul class="flex justify-end space-x-4 text-sm text-gray-600">
+              <li v-for="year in years" :key="year">
+                <button
+                  class="font-bold cursor-pointer hover:underline focus:outline-none focus:underline"
+                  :class="{ 'underline text-black': year === selectedYear }"
+                  @click="loadEvents(year)"
+                >
+                  {{ year }}
+                </button>
+              </li>
+            </ul>
+            <div class="h-4" />
+          </aside>
+          <template v-if="yearEvents">
+            <event-list :events="yearEvents" />
+          </template>
+        </div>
+        <div class="h-10" />
+      </div>
+    </section>
   </div>
 </template>
 
