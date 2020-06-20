@@ -14,6 +14,7 @@ summary: It's time to get back together! On June the 30th we would like to gathe
   and comfortable.
 meetupId: "271376074"
 publish: true
+status: Future
 
 ---
 It's time to get back together! On June the 30th we would like to gather a small group in a safe event environment. We will meet outdoors in a Biergarten and mantain the required 1.5m distance between everyone so that you can feel safe and comfortable.  
