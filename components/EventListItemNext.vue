@@ -1,43 +1,37 @@
 <template>
-  <article class="bg-white shadow event-card">
-    <div id="image">
-      <img class="object-cover w-full h-full" :src="image" />
-    </div>
+  <article class="bg-white shadow-lg event-card">
+    <figure id="image" class="overflow-hidden">
+      <img :src="imageURL" class="object-cover w-full h-full" />
+    </figure>
 
-    <div
-      id="datetime"
-      class="flex items-center justify-center p-2 bg-white border border-black cursor-pointer hover:text-red-600 mouse-pointer"
-    >
-      <p class="text-center font-logo">
-        <a
-          :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
-          class="no-underline"
-        >
-          {{ $dateFns.format(new Date(event.date), 'MMM do') }}<br />
-          {{ $dateFns.format(new Date(event.date), 'H:m') }}</a
-        >
+    <div id="datetime" class="p-6">
+      <p class="text-right font-logo">
+        {{ $dateFns.format(new Date(event.date), 'MMM do') }}<br />
+        {{ $dateFns.format(new Date(event.date), 'H:m') }}
       </p>
     </div>
-    <div id="text" class="py-6 pr-6">
-      <p class="-ml-2 font-logo">
-        <span class="text-red-600">&middot;ban</span>{{ event.type }}
-      </p>
+    <div id="text" class="p-6">
+      <event-type :type="event.type" />
+      <div class="hidden block h-2 sm:block" />
       <h3 class="font-bold">
         <a
           :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
+          target="blank"
           >{{ event.title }}</a
         >
       </h3>
       <p>{{ event.subtitle }}</p>
-      <div class="h-4" />
+    </div>
+    <div id="summary" class="px-6 pb-6 text-sm">
       <p>{{ event.summary }}</p>
       <div class="h-4" />
-      <p class="text-right font-logo">
-        <nuxt-link to="berlin/events">read more ></nuxt-link>
+      <p class="text-sm text-right">
+        <a
+          :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
+          target="blank"
+          >read more &rarr;</a
+        >
       </p>
-    </div>
-    <div id="ban-people" class="hidden text-red-600 font-logo">
-      ( Help, job application!) v v [] [] /-- &lt;\/&gt; [*] \ / \
     </div>
   </article>
 </template>
@@ -49,14 +43,10 @@ export default {
       type: Object,
       required: true,
     },
-    showText: {
-      type: Boolean,
-      default: false,
-    },
   },
   data() {
     return {
-      image: require(`~/${this.event.image}`),
+      imageURL: `${process.env.NUXT_ENV_CLOUDINARY_BASE_URL}/c_fill,dpr_auto,f_auto,g_center,w_832${this.event.image}`,
     }
   },
 }
@@ -65,22 +55,24 @@ export default {
 <style scoped>
 article {
   display: grid;
-  grid-template-columns: 1.5rem 100px 1rem 1fr;
-  grid-template-rows: repeat(2, 100px) 1rem 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-template-columns: 1fr 150px;
+  grid-template-rows: 300px repeat(2, auto);
+  grid-template-areas: 'image image' 'title datetime' 'summary summary';
 }
 
-#text {
-  grid-area: 4 / 2 / 5 / 5;
-}
 #image {
-  grid-area: 1 / 1 / 4 / 5;
+  grid-area: image;
 }
+
+#title {
+  grid-area: title;
+}
+
 #datetime {
-  grid-area: 2 / 2 / 3 / 3;
+  grid-area: datetime;
 }
-#ban-people {
-  grid-area: 4 / 2 / 5 / 3;
+
+#summary {
+  grid-area: summary;
 }
 </style>

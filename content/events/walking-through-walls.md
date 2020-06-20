@@ -1,5 +1,5 @@
 ---
-date: 2019-09-29T15:00:30+02:00
+date: 2019-09-29T15:00:30.000+02:00
 attendees: 11
 type: walks
 title: Walking through Walls
@@ -7,13 +7,14 @@ subtitle: Exhibition visit
 onlineEvent: false
 location: Martin-Gropius Bau
 onlineEventLink: ''
-image: assets/uploads/gb19_jose_davila_untitled_allure_2014_1536w.jpg
+image: "/v1592579138/ban/img/gb19_jose_davila_untitled_allure_2014_1536w_crkrs7.jpg"
 summary: On our next meetup we're going to an exhibition, which explores the concepts
   of dividing and separating space through physical boundaries. What impact does a
   wall have on our spatial perception and environment? How do we deal with and react
   to it?
 meetupId: "265949982"
 publish: true
+status: Past
 
 ---
 Dear BAN-Members,

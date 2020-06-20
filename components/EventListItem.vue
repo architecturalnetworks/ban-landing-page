@@ -1,14 +1,12 @@
 <template>
-  <article class="w-full h-full">
+  <article class="w-full h-full bg-white shadow-lg">
     <div id="image" class="overflow-hidden">
-      <img class="object-cover w-full h-full" :src="image" />
+      <img :src="imageURL" class="object-cover w-full h-full" />
     </div>
 
-    <div class="flex flex-col py-2 pr-2 sm:py-4 sm:pr-4">
+    <div class="flex flex-col py-2 pr-2 sm:py-4 sm:pr-6">
       <div class="flex justify-between font-logo">
-        <p>
-          <span class="-ml-2 text-red-600">&middot;ban</span>{{ event.type }}
-        </p>
+        <event-type :type="event.type" />
         <p>
           {{ $dateFns.format(new Date(event.date), 'MMM do') }}
         </p>
@@ -19,13 +17,12 @@
         <h3 class="font-bold">
           <a
             :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
+            target="blank"
             >{{ event.title }}</a
           >
         </h3>
-        <div class="hidden sm:block">
-          <p class="text-sm">
-            <v-clamp autoresize :max-lines="2">{{ event.subtitle }}</v-clamp>
-          </p>
+        <div class="hidden text-sm sm:block">
+          <v-clamp autoresize :max-lines="2">{{ event.subtitle }}</v-clamp>
           <div class="h-4" />
         </div>
       </div>
@@ -33,10 +30,16 @@
         <span v-if="event.onlineEvent">Online Event</span>
         <span v-else>{{ event.location }}</span>
         ·
-        <span v-if="isPastEvent && event.attendees"
+        <span v-if="event.status === 'Past' && event.attendees"
           >{{ event.attendees }}+ attendees</span
         >
-        <span v-else>register</span>
+        <span v-else
+          ><a
+            :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
+            target="blank"
+            >register</a
+          ></span
+        >
       </p>
     </div>
   </article>
@@ -60,14 +63,8 @@ export default {
   },
   data() {
     return {
-      image: require(`~/${this.event.image}`),
+      imageURL: `${process.env.NUXT_ENV_CLOUDINARY_BASE_URL}/c_fill,dpr_auto,f_auto,g_center,w_272${this.event.image}`,
     }
-  },
-  computed: {
-    isPastEvent() {
-      const today = new Date()
-      return today > new Date(this.event.date)
-    },
   },
 }
 </script>

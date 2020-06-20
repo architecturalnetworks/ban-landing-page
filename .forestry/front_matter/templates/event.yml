@@ -74,8 +74,23 @@ fields:
 - type: boolean
   name: publish
   label: Publish?
+- name: status
+  type: select
+  default: Future
+  config:
+    required: true
+    options:
+    - Future
+    - Past
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Status
 pages:
 - content/events/doomsday-architecture.md
+- content/events/get-back-together.md
 - content/events/humanitarian-work.md
 - content/events/remote-work-in-architecture.md
 - content/events/walking-through-walls.md
