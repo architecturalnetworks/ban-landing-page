@@ -9,5 +9,6 @@ a:hover,
 a:active,
 .link:hover,
 .link:active {
-  @apply text-red-600;
+  @apply text-red-600 underline;
+}
 }
