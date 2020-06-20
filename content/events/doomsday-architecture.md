@@ -14,6 +14,7 @@ summary: In the USA more and more wealthy citizens are preparing for a doomsday 
   from the collapse of society. Let's meet and have a fun discussion.
 meetupId: "265949982"
 publish: true
+status: Past
 
 ---
 In the USA more and more wealthy citizens are preparing for a doomsday scenario by building underground bunkers and other protective structures to defend themselves from the collapse of society. Let's meet and have a fun discussion. What if we knew for sure that in 2020 the society will collapse into chaos, how would we design buildings to protect our wealthy clients from it. Maybe the old castle designs will be resurrected to life again.
