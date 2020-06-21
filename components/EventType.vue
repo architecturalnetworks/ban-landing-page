@@ -20,6 +20,7 @@ export default {
         networking: '·',
         walks: '<',
         workshop: '×',
+        kino: '∞',
       },
     }
   },
