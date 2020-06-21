@@ -79,7 +79,7 @@ export default {
   data() {
     return {
       imageURL: `${process.env.NUXT_ENV_CLOUDINARY_BASE_URL}/c_fill,dpr_auto,f_auto,g_center,w_272${this.event.image}`,
-      dateFormat: this.event.status === 'Past' ? 'dd.MM.yy' : 'd.M H:m', // 'MMM do H:m',
+      dateFormat: this.event.status === 'Past' ? 'd.M.yy' : 'd.M H:m', // 'MMM do H:m',
     }
   },
 }
