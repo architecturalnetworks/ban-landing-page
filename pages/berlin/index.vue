@@ -18,7 +18,7 @@
         </h1>
         <p>{{ homeCopy.tagline }}</p>
         <div class="h-12" />
-        <div class="max-w-sm mx-auto">
+        <div class="">
           <email-form :text="homeCopy" />
         </div>
       </section>
@@ -36,27 +36,29 @@
       <div class="h-12 sm:h-16" />
     </div>
     <!-- EVENTS -->
-    <section class="px-4 py-8 bg-gray-100 sm:p-8">
+    <section class="px-4 pb-8 sm:px-8">
       <div class="max-w-xl mx-auto">
         <!-- <div class="w-12 mb-1 border-t-2 border-red-600" /> -->
-        <div class="flex justify-between">
+        <div class="flex items-center justify-between">
           <h2 class="font-bold">
             <nuxt-link to="/berlin/events" class="no-underline"
               >Events</nuxt-link
             >
             <span class="font-normal text-red-600 font-logo">next</span>
           </h2>
-          <p class="font-logo">
-            <nuxt-link to="/berlin/events" class="no-underline">[>]</nuxt-link>
+          <p class="text-red-600 font-logo">
+            <nuxt-link to="/berlin/events" class="no-underline">[·]</nuxt-link>
           </p>
         </div>
         <div class="h-4" />
         <event-list-home :events="events" />
-        <div class="h-8" />
-        <p class="pl-4">
-          Any ideas for an event?
-          <a href="mailto:berlin@architecturalnetworks.com">Let us know!</a>
-        </p>
+        <div class="md:hidden">
+          <div class="h-8" />
+          <p class="pl-4">
+            Any ideas for an event?
+            <a href="mailto:berlin@architecturalnetworks.com">Let us know!</a>
+          </p>
+        </div>
       </div>
       <div class="h-8" />
     </section>
