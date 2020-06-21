@@ -7,7 +7,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: '·ban | berlin architectural network' || '',
+    title: '·ban | Berlin Architectural Network' || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -41,7 +41,7 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: { color: '#E53E3E' },
   /*
    ** Global CSS
    */
@@ -91,5 +91,6 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {},
+    transpile: ['vue-clamp', 'resize-detector'],
   },
 }

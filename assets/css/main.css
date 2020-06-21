@@ -9,5 +9,14 @@ a:hover,
 a:active,
 .link:hover,
 .link:active {
-  @apply text-red-600;
+  @apply text-red-600 underline;
+}
+
+.full-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }

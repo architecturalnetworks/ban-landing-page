@@ -3,7 +3,7 @@ const axios = require('axios')
 
 const apiRoot = 'https://us18.api.mailchimp.com/3.0/lists/c212cae123/members/'
 
-exports.handler = async (event) => {
+exports.handler = (event) => {
   try {
     const email = event.queryStringParameters.email
     if (!email) {
@@ -37,6 +37,7 @@ exports.handler = async (event) => {
         }
       })
       .catch((err) => {
+        // eslint-disable-next-line no-console
         console.log('returning from here', err.response.data.detail)
         return { statusCode: 500, body: JSON.stringify(err.response.data) }
       })

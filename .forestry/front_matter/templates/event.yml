@@ -1,0 +1,114 @@
+---
+label: Event
+hide_body: false
+display_field: title
+fields:
+- type: text
+  name: type
+  label: Event Type
+  config:
+    required: true
+    max: 
+  description: 'One of these: talks, workshop, networking, walks'
+- type: text
+  name: title
+  label: Title
+- type: text
+  name: subtitle
+  label: Subtitle
+- type: datetime
+  name: date
+  label: Date/Time
+  config:
+    required: true
+  default: now
+  description: Date and time of the event
+- name: onlineEvent
+  type: boolean
+  label: Online Event?
+- name: location
+  type: text
+  config:
+    required: false
+  label: Location
+  showOnly:
+    field: onlineEvent
+- name: onlineEventLink
+  type: text
+  config:
+    required: false
+  label: Online Event Link
+  showOnly:
+    field: onlineEvent
+    value: true
+- name: image
+  type: file
+  config:
+    maxSize: 64
+  label: Featured Image
+- name: summary
+  type: textarea
+  default: ''
+  config:
+    required: true
+    wysiwyg: false
+    schema:
+      format: markdown
+    max: 280
+    min: 100
+  label: Summary
+  description: Max. 280 characters.
+- type: text
+  name: meetupId
+  label: MeetUp ID
+- name: attendees
+  type: number
+  label: Attendees
+  description: ''
+  default: 0
+  required: true
+  config:
+    min: 
+    max: 
+    step: 
+- type: boolean
+  name: publish
+  label: Publish?
+- name: status
+  type: select
+  default: Future
+  config:
+    required: true
+    options:
+    - Future
+    - Past
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Status
+pages:
+- content/events/animalesque.md
+- content/events/archislavery.md
+- content/events/architectural-vision-board.md
+- content/events/architecture-is-dead.md
+- content/events/bauhaus-100.md
+- content/events/doomsday-architecture.md
+- content/events/fast-architecture.md
+- content/events/gallery-weekend-berlin.md
+- content/events/get-back-together.md
+- content/events/hansaviertel.md
+- content/events/happy-hour-1.md
+- content/events/happy-hour-2.md
+- content/events/happy-hour-3.md
+- content/events/happy-hour.md
+- content/events/housing-architecture.md
+- content/events/humanitarian-work.md
+- content/events/members-talk-1.md
+- content/events/members-talk.md
+- content/events/push-fur-das-grundrecht-aufs-wohnen.md
+- content/events/remote-work-in-architecture.md
+- content/events/spreepark.md
+- content/events/tiny-houses-meet-global-challenges.md
+- content/events/walking-through-walls.md

@@ -1,17 +1,12 @@
 <template>
   <div
-    class="flex items-center justify-center max-w-3xl mx-auto space-x-12 text-lg text-red-600 font-logo sm:text-xl"
+    class="flex items-center justify-center max-w-3xl mx-auto space-x-12 text-lg text-red-600 sm:text-xl"
   >
     <div v-if="dotVersion" class="w-40 h-40 ban-dot">
       <component :is="`ban-person-${dotVersion}`" class="w-40 h-40" />
     </div>
     <div v-else class="w-40" />
-    <div class="hidden text-black md:block ban-logo">
-      <p>|</p>
-      <p><span class="text-red-600">&middot; b</span>erlin</p>
-      <p>| <span class="text-red-600">a</span>rchitectural</p>
-      <p>| <span class="text-red-600">n</span>etwork</p>
-    </div>
+    <!-- <logo-full-text class="hidden text-black md:block ban-logo" /> -->
   </div>
 </template>
 
@@ -34,9 +29,6 @@ export default {
       dotVersion: this.getRndInteger(1, 5),
     }
   },
-  // mounted() {
-  //   this.dotVersion = this.getRndInteger(1, 5)
-  // },
   methods: {
     getRndInteger(min, max) {
       return Math.floor(Math.random() * (max - min)) + min

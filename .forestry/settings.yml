@@ -10,6 +10,8 @@ sections:
   create: documents
   match: "**/*"
   new_doc_ext: md
+  templates:
+  - event
 - type: heading
   label: Single texts
 - type: document
@@ -18,10 +20,10 @@ sections:
 - type: document
   path: content/homeAbout.md
   label: Home About Text
-upload_dir: uploads
-public_path: "/uploads"
+upload_dir: ban/img
+public_path: https://res.cloudinary.com/architecturalnetworks/ban/img
 front_matter_path: ''
-use_front_matter_path: false
+use_front_matter_path: true
 file_template: ":filename:"
 build:
   preview_output_directory: dist

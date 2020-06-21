@@ -1,19 +1,14 @@
 <template>
   <div>
     <div class="px-4 sm:px-8">
-      <header class="pt-8 md:pt-24">
-        <!-- <div class="flex items-center justify-between md:hidden">
-          <logo-ban-text class="text-2xl" />
-          <div>
-            <icon-hamburger class="w-6 h-6" />
-          </div>
-        </div> -->
-        <div class="h-8 md:hidden" />
+      <header class="max-w-4xl pt-4 mx-auto">
+        <nav-bar />
+        <div class="h-8 md:h-20" />
         <!-- HERO -->
         <home-hero />
       </header>
 
-      <div class="h-12 md:h-24" />
+      <div class="h-12 md:h-20" />
       <section
         class="max-w-xl mx-auto text-lg leading-tight text-center md:text-xl"
       >
@@ -23,7 +18,7 @@
         </h1>
         <p>{{ homeCopy.tagline }}</p>
         <div class="h-12" />
-        <div class="max-w-sm mx-auto">
+        <div class="">
           <email-form :text="homeCopy" />
         </div>
       </section>
@@ -39,62 +34,34 @@
         </div>
       </section>
       <div class="h-12 sm:h-16" />
-      <!-- EVENTS -->
-      <section>
-        <div class="max-w-xl mx-auto">
-          <!-- <div class="w-12 mb-1 border-t-2 border-red-600" /> -->
-          <div class="flex justify-between">
-            <h2 class="font-bold">
-              Events
-              <span class="font-normal text-red-600 font-logo">next</span>
-            </h2>
-            <p class="font-logo">[O]</p>
-          </div>
-          <div class="h-8" />
-          <ul class="space-y-8">
-            <li
-              v-for="event in events"
-              :key="event.slug"
-              class="flex items-start space-x-4"
-            >
-              <div
-                class="flex-none w-12 text-center cursor-pointer sm:w-24 hover:text-red-600 mouse-pointer"
-              >
-                <p class="text-right font-logo">
-                  <a :href="event.link" class="no-underline">
-                    {{ $dateFns.format(new Date(event.date), 'MMM do') }}<br />
-                    {{ event.time }}</a
-                  >
-                </p>
-              </div>
-              <div>
-                <p class="-ml-2 font-logo">
-                  <span class="text-red-600">&middot;ban</span>{{ event.type }}
-                </p>
-                <h3 class="font-bold">
-                  <a :href="event.link">{{ event.title }}</a>
-                </h3>
-                <p>{{ event.subtitle }}</p>
-              </div>
-            </li>
-            <li class="flex items-start space-x-4">
-              <div
-                class="flex-none w-12 text-center cursor-pointer sm:w-24 hover:text-red-600 mouse-pointer"
-              ></div>
-              <div>
-                <p>
-                  Any ideas for an event?
-                  <a href="mailto:berlin@architecturalnetworks.com"
-                    >Let us know</a
-                  >!
-                </p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <div class="h-16" />
     </div>
+    <!-- EVENTS -->
+    <section class="px-4 pb-8 sm:px-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- <div class="w-12 mb-1 border-t-2 border-red-600" /> -->
+        <div class="flex items-center justify-between">
+          <h2 class="font-bold">
+            <nuxt-link to="/berlin/events" class="no-underline"
+              >Events</nuxt-link
+            >
+            <span class="font-normal text-red-600 font-logo">next</span>
+          </h2>
+          <p class="text-red-600 font-logo">
+            <nuxt-link to="/berlin/events" class="no-underline">[·]</nuxt-link>
+          </p>
+        </div>
+        <div class="h-4" />
+        <event-list-home :events="events" />
+        <div class="md:hidden">
+          <div class="h-8" />
+          <p class="pl-4">
+            Any ideas for an event?
+            <a href="mailto:berlin@architecturalnetworks.com">Let us know!</a>
+          </p>
+        </div>
+      </div>
+      <div class="h-8" />
+    </section>
     <!-- ABOUT  -->
     <section class="px-4 py-8 text-white bg-black sm:p-8">
       <div class="max-w-xl mx-auto">
@@ -109,7 +76,6 @@
         </div>
       </div>
     </section>
-    <base-footer />
   </div>
 </template>
 
@@ -118,7 +84,14 @@ export default {
   async asyncData({ $content }) {
     const homeCopy = await $content('homeCopy').fetch()
     const about = await $content('homeAbout').fetch()
-    const events = await $content('events').fetch()
+    const events = await $content('events')
+      .where({
+        publish: true,
+        status: 'Future',
+      })
+      .sortBy('date', 'asc')
+      .fetch()
+
     return {
       about,
       events,
@@ -128,30 +101,4 @@ export default {
 }
 </script>
 
-<style>
-.masthead {
-  width: 100%;
-  height: 100vh; /* if you don't want it to take up the full screen, reduce this number */
-  overflow: hidden;
-  background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.25) 0%,
-      rgba(255, 255, 255, 0.25) 0%,
-      rgba(255, 255, 255, 1) 100%
-    ),
-    url(~static/imgs/Paper-Artist-and-Engineer-Matt-Shlian.jpg) no-repeat center
-      center scroll;
-  background-size: cover, cover;
-}
-@screen sm {
-  .masthead {
-    height: 75vh;
-  }
-}
-
-@screen lg {
-  .masthead {
-    height: 100vh;
-  }
-}
-</style>
+<style></style>
