@@ -7,7 +7,7 @@
       <div class="h-6" />
       <template v-if="futureEvents">
         <event-list-item-next :event="futureEvents[0]" image-size="large" />
-        <div class="h-4" />
+        <div class="h-6" />
         <event-list
           v-if="futureEvents.length > 1"
           :events="futureEvents.slice(1)"
@@ -22,7 +22,7 @@
         <h2 class="text-2xl font-bold">
           Events<span class="font-normal text-red-600 font-logo"> past</span>
         </h2>
-        <div class="h-2" />
+        <div class="h-4" />
 
         <!-- <aside>
             <ul class="flex justify-end space-x-4 text-sm text-gray-600">
