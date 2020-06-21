@@ -1,12 +1,17 @@
 <template>
-  <nav class="flex items-end justify-between">
+  <nav class="flex items-center justify-between">
     <nuxt-link to="/berlin" tag="button" class="text-left focus:outline-none"
       ><logo-full-text :class="size === 'large' ? 'text-lg' : 'text-base'"
     /></nuxt-link>
-    <div class="font-bold">
-      <p>
-        <nuxt-link class="no-underline" to="/berlin/events">Events</nuxt-link>
+
+    <div class="font-logo">
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p class="font-sans font-bold">
+        <nuxt-link to="/berlin/events">Events</nuxt-link>
       </p>
+
+      <p>&nbsp;</p>
     </div>
   </nav>
 </template>
