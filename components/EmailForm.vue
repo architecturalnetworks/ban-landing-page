@@ -25,34 +25,36 @@
     </template>
     <template v-else>
       <form @submit.prevent="submit">
-        <p>
-          <input
-            id="email"
-            v-model="email"
-            class="w-full h-10 p-2 text-black bg-white border border-black shadow-inner sm:h-12 sm:text-lg"
-            type="text"
-            :placeholder="text.ctaInputPlaceholder"
-          />
-        </p>
-        <div class="w-2 h-2" />
-        <p>
-          <button
-            type="submit"
-            :disabled="isLoading"
-            class="flex items-center justify-center w-full h-10 p-1 text-lg tracking-wide text-white uppercase bg-red-600 shadow font-logo sm:h-12 sm:text-lg"
-          >
-            <span v-if="isLoading">
-              <pulse-loader
-                :loading="true"
-                color="#ffffff"
-                size="5px"
-              ></pulse-loader>
-            </span>
-            <span v-else>
-              {{ text.ctaButtonText }}
-            </span>
-          </button>
-        </p>
+        <div class="w-full sm:flex">
+          <p class="sm:w-1/2">
+            <input
+              id="email"
+              v-model="email"
+              class="w-full h-10 p-2 text-black bg-white border border-black shadow-inner sm:h-12 sm:text-lg"
+              type="text"
+              :placeholder="text.ctaInputPlaceholder"
+            />
+          </p>
+          <div class="h-2 sm:hidden" />
+          <p class="sm:w-1/2">
+            <button
+              type="submit"
+              :disabled="isLoading"
+              class="flex items-center justify-center w-full h-10 p-1 text-lg tracking-wide text-white uppercase bg-red-600 shadow font-logo sm:h-12 sm:text-lg"
+            >
+              <span v-if="isLoading">
+                <pulse-loader
+                  :loading="true"
+                  color="#ffffff"
+                  size="5px"
+                ></pulse-loader>
+              </span>
+              <span v-else>
+                {{ text.ctaButtonText }}
+              </span>
+            </button>
+          </p>
+        </div>
       </form>
       <div class="h-2" />
       <p class="text-xs text-center sm:text-sm">
