@@ -89,6 +89,7 @@ fields:
       path: 
   label: Status
 pages:
+- content/events/animalesque.md
 - content/events/archislavery.md
 - content/events/architectural-vision-board.md
 - content/events/architecture-is-dead.md
