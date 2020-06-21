@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="home-event-grid">
     <event-list-item-next :event="events[0]" />
-    <div class="h-4" />
+
     <div v-if="events.length > 1">
       <!-- SMALLER SCREENS, SHOW BIG CARDS -->
       <ul id="list-screen-small" class="space-y-4 md:hidden">
@@ -11,7 +11,7 @@
       </ul>
       <!-- LARGE SCREENS, MAKE IT A REGULAR LIST -->
       <div class="hidden md:block">
-        <event-list :events="events.slice(1)"></event-list>
+        <event-list :events="events.slice(1)" />
       </div>
     </div>
   </div>
@@ -28,4 +28,10 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.home-event-grid {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-gap: 1.25rem;
+}
+</style>

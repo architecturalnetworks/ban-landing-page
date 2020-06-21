@@ -4,13 +4,13 @@
       <img :src="imageURL" class="object-cover w-full h-full" />
     </figure>
 
-    <div id="type-date" class="flex justify-between p-4">
+    <div id="type-date" class="flex justify-between px-4 py-4 md:pl-0">
       <event-type :type="event.type" />
       <p class="text-right text-red-600 font-logo">
-        {{ $dateFns.format(new Date(event.date), 'MMM do H:m') }}
+        {{ $dateFns.format(new Date(event.date), 'd.M H:m') }}
       </p>
     </div>
-    <div id="title" class="px-4 pb-4">
+    <div id="title" class="px-4 pb-4 md:pl-0">
       <h3 class="font-bold">
         <a
           :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
@@ -20,10 +20,10 @@
       </h3>
       <p>{{ event.subtitle }}</p>
     </div>
-    <div id="summary" class="hidden px-4 pb-4 md:block">
+    <div id="summary" class="hidden px-4 pb-4 md:pl-0 md:block">
       <p>{{ event.summary }}</p>
     </div>
-    <div id="location" class="px-4 pb-6">
+    <div id="location" class="px-4 pb-6 md:pl-0">
       <p v-if="event.onlineEvent">
         <icon-video class="w-4 h-4" /> Online Event
       </p>
@@ -50,6 +50,9 @@ export default {
 
 <style scoped>
 article {
+  max-width: 385px;
+  margin-left: auto;
+  margin-right: auto;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 200px repeat(3, auto);
@@ -57,7 +60,10 @@ article {
 
 @screen md {
   article {
-    grid-template-columns: 200px 1fr;
+    max-width: none;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1.25rem;
     grid-template-rows: repeat(4, auto);
     grid-template-areas: 'image type-date' 'image title' 'image summary' 'image location';
   }
