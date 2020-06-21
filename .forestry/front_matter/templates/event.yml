@@ -89,8 +89,26 @@ fields:
       path: 
   label: Status
 pages:
+- content/events/animalesque.md
+- content/events/archislavery.md
+- content/events/architectural-vision-board.md
+- content/events/architecture-is-dead.md
+- content/events/bauhaus-100.md
 - content/events/doomsday-architecture.md
+- content/events/fast-architecture.md
+- content/events/gallery-weekend-berlin.md
 - content/events/get-back-together.md
+- content/events/hansaviertel.md
+- content/events/happy-hour-1.md
+- content/events/happy-hour-2.md
+- content/events/happy-hour-3.md
+- content/events/happy-hour.md
+- content/events/housing-architecture.md
 - content/events/humanitarian-work.md
+- content/events/members-talk-1.md
+- content/events/members-talk.md
+- content/events/push-fur-das-grundrecht-aufs-wohnen.md
 - content/events/remote-work-in-architecture.md
+- content/events/spreepark.md
+- content/events/tiny-houses-meet-global-challenges.md
 - content/events/walking-through-walls.md
