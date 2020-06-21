@@ -1,5 +1,5 @@
 ---
-date: 2019-09-08T19:00:34+02:00
+date: 2019-09-08T13:15:34+02:00
 attendees: 15
 status: Past
 type: kino
