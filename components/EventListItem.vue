@@ -4,32 +4,35 @@
       <img :src="imageURL" class="object-cover w-full h-full" />
     </div>
 
-    <div class="flex flex-col py-2 pr-2 sm:py-4 sm:pr-6">
-      <div class="flex justify-between font-logo">
-        <event-type :type="event.type" />
-        <p>
-          {{ $dateFns.format(new Date(event.date), 'MMM do') }}
-        </p>
-      </div>
+    <div id="type-date" class="flex justify-between px-4 pt-4 pb-3 font-logo">
+      <event-type :type="event.type" />
+      <p class="text-red-600">
+        {{ $dateFns.format(new Date(event.date), dateFormat) }}
+      </p>
+    </div>
 
-      <div id="text">
-        <div class="hidden block h-2 sm:block" />
-        <h3 class="font-bold">
-          <a
-            :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
-            target="blank"
-            >{{ event.title }}</a
-          >
-        </h3>
-        <div class="hidden text-sm sm:block">
-          <v-clamp autoresize :max-lines="2">{{ event.subtitle }}</v-clamp>
-          <div class="h-4" />
-        </div>
+    <div id="title" class="px-4 pb-4">
+      <h3 class="font-bold">
+        <a
+          :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
+          target="blank"
+          >{{ event.title }}</a
+        >
+      </h3>
+      <div v-if="event.status === 'Future'" class="hidden text-sm sm:block">
+        <v-clamp autoresize :max-lines="2">{{ event.subtitle }}</v-clamp>
       </div>
-      <p class="mt-auto text-xs tracking-wide text-gray-600 uppercase">
-        <span v-if="event.onlineEvent">Online Event</span>
-        <span v-else>{{ event.location }}</span>
-        ·
+      <div v-else class="h-4" />
+    </div>
+    <div v-if="event.status === 'Future'" id="location" class="px-4 pb-4">
+      <p>
+        <span v-if="event.onlineEvent"
+          ><icon-video class="w-4 h-4" /> Online Event</span
+        >
+        <span v-else
+          ><icon-location class="w-4 h-4" />{{ event.location }}</span
+        >
+        <!-- ·
         <span v-if="event.status === 'Past' && event.attendees"
           >{{ event.attendees }}+ attendees</span
         >
@@ -39,7 +42,7 @@
             target="blank"
             >register</a
           ></span
-        >
+        > -->
       </p>
     </div>
   </article>
@@ -64,6 +67,7 @@ export default {
   data() {
     return {
       imageURL: `${process.env.NUXT_ENV_CLOUDINARY_BASE_URL}/c_fill,dpr_auto,f_auto,g_center,w_272${this.event.image}`,
+      dateFormat: this.event.status === 'Past' ? 'dd.MM.yy' : 'MMM do H:m',
     }
   },
 }
@@ -72,7 +76,7 @@ export default {
 <style scoped>
 article {
   display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 200px repeat(3, auto);
 }
 </style>

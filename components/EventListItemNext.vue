@@ -4,15 +4,13 @@
       <img :src="imageURL" class="object-cover w-full h-full" />
     </figure>
 
-    <div id="datetime" class="p-6">
-      <p class="text-right font-logo">
-        {{ $dateFns.format(new Date(event.date), 'MMM do') }}<br />
-        {{ $dateFns.format(new Date(event.date), 'H:m') }}
+    <div id="type-date" class="flex justify-between p-4">
+      <event-type :type="event.type" />
+      <p class="text-right text-red-600 font-logo">
+        {{ $dateFns.format(new Date(event.date), 'MMM do H:m') }}
       </p>
     </div>
-    <div id="text" class="p-6">
-      <event-type :type="event.type" />
-      <div class="hidden block h-2 sm:block" />
+    <div id="title" class="px-4 pb-4">
       <h3 class="font-bold">
         <a
           :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
@@ -22,16 +20,14 @@
       </h3>
       <p>{{ event.subtitle }}</p>
     </div>
-    <div id="summary" class="px-6 pb-6 text-sm">
+    <div id="summary" class="hidden px-4 pb-4 md:block">
       <p>{{ event.summary }}</p>
-      <div class="h-4" />
-      <p class="text-sm text-right">
-        <a
-          :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
-          target="blank"
-          >read more &rarr;</a
-        >
+    </div>
+    <div id="location" class="px-4 pb-6">
+      <p v-if="event.onlineEvent">
+        <icon-video class="w-4 h-4" /> Online Event
       </p>
+      <p v-else><icon-location class="w-4 h-4" /> {{ event.location }}</p>
     </div>
   </article>
 </template>
@@ -46,7 +42,7 @@ export default {
   },
   data() {
     return {
-      imageURL: `${process.env.NUXT_ENV_CLOUDINARY_BASE_URL}/c_fill,dpr_auto,f_auto,g_center,w_832${this.event.image}`,
+      imageURL: `${process.env.NUXT_ENV_CLOUDINARY_BASE_URL}/ar_1.5,c_fill,dpr_auto,f_auto,g_center,w_832${this.event.image}`,
     }
   },
 }
@@ -55,24 +51,30 @@ export default {
 <style scoped>
 article {
   display: grid;
-  grid-template-columns: 1fr 150px;
-  grid-template-rows: 300px repeat(2, auto);
-  grid-template-areas: 'image image' 'title datetime' 'summary summary';
+  grid-template-columns: 1fr;
+  grid-template-rows: 200px repeat(3, auto);
 }
 
-#image {
-  grid-area: image;
-}
-
-#title {
-  grid-area: title;
-}
-
-#datetime {
-  grid-area: datetime;
-}
-
-#summary {
-  grid-area: summary;
+@screen md {
+  article {
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas: 'image type-date' 'image title' 'image summary' 'image location';
+  }
+  #image {
+    grid-area: image;
+  }
+  #type-date {
+    grid-area: type-date;
+  }
+  #title {
+    grid-area: title;
+  }
+  #summary {
+    grid-area: summary;
+  }
+  #location {
+    grid-area: location;
+  }
 }
 </style>
