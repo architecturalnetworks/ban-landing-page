@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="px-4 sm:px-8">
-      <header class="max-w-2xl pt-4 mx-auto">
+      <header class="max-w-4xl pt-4 mx-auto">
         <nav-bar />
         <div class="h-8 md:h-20" />
         <!-- HERO -->
@@ -37,7 +37,7 @@
     </div>
     <!-- EVENTS -->
     <section class="px-4 pb-8 sm:px-8">
-      <div class="max-w-2xl mx-auto">
+      <div class="max-w-4xl mx-auto">
         <!-- <div class="w-12 mb-1 border-t-2 border-red-600" /> -->
         <div class="flex items-center justify-between">
           <h2 class="font-bold">
