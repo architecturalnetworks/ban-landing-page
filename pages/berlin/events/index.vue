@@ -13,11 +13,7 @@
           :events="futureEvents.slice(1)"
         />
       </template>
-      <div class="h-8" />
-      <p class="pl-4">
-        Any ideas for an event?
-        <a href="mailto:berlin@architecturalnetworks.com">Let us know!</a>
-      </p>
+
       <div class="h-12" />
     </section>
     <section class="bg-gray-100 full-width">
@@ -27,8 +23,8 @@
           Events<span class="font-normal text-red-600 font-logo"> past</span>
         </h2>
         <div class="h-2" />
-        <div class="">
-          <aside>
+
+        <!-- <aside>
             <ul class="flex justify-end space-x-4 text-sm text-gray-600">
               <li v-for="year in years" :key="year">
                 <button
@@ -41,11 +37,11 @@
               </li>
             </ul>
             <div class="h-4" />
-          </aside>
-          <template v-if="yearEvents">
-            <event-list :events="yearEvents" />
-          </template>
-        </div>
+          </aside> -->
+        <template v-if="pastEvents">
+          <event-list :events="pastEvents" :is-past="true" />
+        </template>
+
         <div class="h-10" />
       </div>
     </section>
@@ -81,26 +77,26 @@ export default {
       selectedYear: new Date().getFullYear(),
     }
   },
-  computed: {
-    yearEvents() {
-      return this.pastEvents.filter((event) => {
-        const eventDate = new Date(event.date)
-        const eventYear = eventDate.getFullYear()
-        return eventYear === this.selectedYear
-      })
-    },
-    years() {
-      const allYears = this.pastEvents.map((event) => {
-        const date = new Date(event.date)
-        return date.getFullYear()
-      })
-      return [...new Set(allYears)]
-    },
-  },
-  methods: {
-    loadEvents(year) {
-      this.selectedYear = year
-    },
-  },
+  // computed: {
+  //   yearEvents() {
+  //     return this.pastEvents.filter((event) => {
+  //       const eventDate = new Date(event.date)
+  //       const eventYear = eventDate.getFullYear()
+  //       return eventYear === this.selectedYear
+  //     })
+  //   },
+  //   years() {
+  //     const allYears = this.pastEvents.map((event) => {
+  //       const date = new Date(event.date)
+  //       return date.getFullYear()
+  //     })
+  //     return [...new Set(allYears)]
+  //   },
+  // },
+  // methods: {
+  //   loadEvents(year) {
+  //     this.selectedYear = year
+  //   },
+  // },
 }
 </script>
