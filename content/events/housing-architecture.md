@@ -1,5 +1,5 @@
 ---
-date: 2018-02-13T06:30:28+01:00
+date: 2018-02-13T06:30:28.000+01:00
 attendees: 21
 status: Past
 type: talks
@@ -9,7 +9,7 @@ subtitle: Did you ever got through the experience of searching for an apartment 
 onlineEvent: false
 location: Kontist Headquarters
 onlineEventLink: ''
-image: "/v1592733877/ban/img/danny-giebe-NwU3KWRoSSE-unsplash_atoq9z.jpg"
+image: "/v1592740561/ban/img/600_467777413_z5zwvk.jpg"
 summary: 'One of the hottest topics on the current architectural scene, is "Housing
   Architecture". The demand on urban areas is very high, which immediately leads to
   the question: how should we live in the future?'
