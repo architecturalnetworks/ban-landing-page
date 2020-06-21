@@ -1,5 +1,5 @@
 ---
-date: 2020-06-21T11:34:18+02:00
+date: 2019-06-18T18:30:18+02:00
 attendees: 16
 status: Past
 type: networking
