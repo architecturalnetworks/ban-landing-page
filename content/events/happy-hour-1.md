@@ -8,7 +8,7 @@ subtitle: Let's socialize!
 onlineEvent: false
 location: Cafe Dix
 onlineEventLink: ''
-image: ''
+image: "/v1592731862/ban/img/nathan-dumlao-6VhPY27jdps-unsplash_lkbagy.jpg"
 summary: Our upcoming Meetup it's going to be all about socializing and getting to
   know each other. If you're looking forward to meet members from different offices,
   explore what they’re doing at the moment and exchange ideas, this is the chance!
