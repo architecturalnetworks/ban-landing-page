@@ -1,5 +1,5 @@
 ---
-date: 2020-06-21T11:03:29+02:00
+date: 2019-09-15T14:00:29+02:00
 attendees: 21
 status: Past
 type: walks
