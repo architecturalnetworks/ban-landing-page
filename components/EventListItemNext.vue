@@ -1,7 +1,12 @@
 <template>
   <article class="bg-white shadow-lg event-card">
     <figure id="image" class="overflow-hidden">
-      <img :src="imageURL" class="object-cover w-full h-full" />
+      <a
+        :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
+        target="blank"
+        class="no-underline"
+        ><img :src="imageURL" class="object-cover w-full h-full"
+      /></a>
     </figure>
 
     <div id="type-date" class="flex justify-between px-4 py-4 md:pl-0">
