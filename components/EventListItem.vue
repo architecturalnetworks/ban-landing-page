@@ -12,49 +12,39 @@
         <img :src="imageURL" class="object-cover w-full h-full"
       /></a>
     </figure>
-    <main>
-      <div class="p-4">
-        <div id="type-date" class="flex justify-between pb-3 font-logo">
-          <event-type :type="event.type" />
-          <p class="text-red-600">
-            {{ $dateFns.format(new Date(event.date), dateFormat) }}
-          </p>
-        </div>
+    <main class="p-4">
+      <div id="type-date" class="flex justify-between pb-3 font-logo">
+        <event-type :type="event.type" />
+        <p class="text-red-600">
+          {{ $dateFns.format(new Date(event.date), dateFormat) }}
+        </p>
+      </div>
 
-        <div id="title">
-          <h3 class="font-bold">
-            <a
-              :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
-              target="blank"
-              >{{ event.title }}</a
-            >
-          </h3>
-          <div v-if="event.status === 'Future'" class="hidden sm:block">
-            <v-clamp autoresize :max-lines="2">{{ event.subtitle }}</v-clamp>
-          </div>
-        </div>
-        <div v-if="event.status === 'Future'" id="location">
-          <div class="h-4" />
-          <p>
-            <span v-if="event.onlineEvent"
-              ><icon-video class="w-4 h-4" /> Online Event</span
-            >
-            <span v-else
-              ><icon-location class="w-4 h-4" />{{ event.location }}</span
-            >
-            <!-- ·
-        <span v-if="event.status === 'Past' && event.attendees"
-          >{{ event.attendees }}+ attendees</span
-        >
-        <span v-else
-          ><a
+      <div id="title">
+        <h3 class="font-bold">
+          <a
             :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
             target="blank"
-            >register</a
-          ></span
-        > -->
-          </p>
+            >{{ event.title }}</a
+          >
+        </h3>
+        <div v-if="event.status === 'Future'" class="hidden sm:block">
+          <v-clamp autoresize :max-lines="2">{{ event.subtitle }}</v-clamp>
         </div>
+      </div>
+      <div id="location" :class="{ 'text-sm': event.status === 'Past' }">
+        <div class="h-4" />
+        <p>
+          <span v-if="event.onlineEvent"
+            ><icon-video class="w-4 h-4" /> Online Event</span
+          >
+          <span v-else
+            ><icon-location
+              class="w-4 h-4"
+              :class="{ 'pb-1': event.status === 'Past' }"
+            />{{ event.location }}</span
+          >
+        </p>
       </div>
     </main>
   </article>
@@ -78,7 +68,7 @@ export default {
   },
   data() {
     return {
-      imageURL: `${process.env.NUXT_ENV_CLOUDINARY_BASE_URL}/c_fill,dpr_auto,f_auto,g_center,w_272${this.event.image}`,
+      imageURL: `${process.env.NUXT_ENV_CLOUDINARY_BASE_URL}/ar_1.5,c_crop,dpr_auto,f_auto,g_center${this.event.image}`,
       dateFormat: this.event.status === 'Past' ? 'd.M.yy' : 'd.M H:m', // 'MMM do H:m',
     }
   },
@@ -88,17 +78,10 @@ export default {
 <style scoped>
 article {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
 }
-article.future-event-card {
-  grid-template-rows: 200px auto;
-}
-article.past-event-card {
-  grid-template-rows: 150px auto;
-}
-@screen lg {
-  article.past-event-card {
-    grid-template-rows: 120px auto;
-  }
+main {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 </style>
