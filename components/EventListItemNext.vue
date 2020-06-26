@@ -47,7 +47,7 @@ export default {
   },
   data() {
     return {
-      imageURL: `${process.env.NUXT_ENV_CLOUDINARY_BASE_URL}/ar_1.5,c_fill,dpr_auto,f_auto,g_center,w_832${this.event.image}`,
+      imageURL: `${process.env.NUXT_ENV_CLOUDINARY_BASE_URL}/ar_1.5,c_crop,dpr_auto,f_auto,g_center${this.event.image}`,
     }
   },
 }
@@ -60,7 +60,7 @@ article {
   margin-right: auto;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 200px repeat(3, auto);
+  grid-template-rows: auto auto 1fr auto;
 }
 
 @screen md {
@@ -69,7 +69,7 @@ article {
     width: 100%;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 1.25rem;
-    grid-template-rows: repeat(4, auto);
+    grid-template-rows: auto auto 1fr auto;
     grid-template-areas: 'image type-date' 'image title' 'image summary' 'image location';
   }
   #image {

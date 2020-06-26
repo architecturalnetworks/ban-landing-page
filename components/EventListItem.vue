@@ -78,7 +78,7 @@ export default {
   },
   data() {
     return {
-      imageURL: `${process.env.NUXT_ENV_CLOUDINARY_BASE_URL}/c_fill,dpr_auto,f_auto,g_center,w_272${this.event.image}`,
+      imageURL: `${process.env.NUXT_ENV_CLOUDINARY_BASE_URL}/ar_1.5,c_crop,dpr_auto,f_auto,g_center${this.event.image}`,
       dateFormat: this.event.status === 'Past' ? 'd.M.yy' : 'd.M H:m', // 'MMM do H:m',
     }
   },
@@ -90,9 +90,9 @@ article {
   display: grid;
   grid-template-columns: 1fr;
 }
-article.future-event-card {
+/* article.future-event-card {
   grid-template-rows: 200px auto;
-}
+} */
 article.past-event-card {
   grid-template-rows: 150px auto;
 }
