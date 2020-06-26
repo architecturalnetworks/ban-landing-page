@@ -19,20 +19,6 @@
         </h2>
         <div class="h-4" />
 
-        <!-- <aside>
-            <ul class="flex justify-end space-x-4 text-sm text-gray-600">
-              <li v-for="year in years" :key="year">
-                <button
-                  class="font-bold cursor-pointer hover:underline focus:outline-none focus:underline"
-                  :class="{ 'underline text-black': year === selectedYear }"
-                  @click="loadEvents(year)"
-                >
-                  {{ year }}
-                </button>
-              </li>
-            </ul>
-            <div class="h-4" />
-          </aside> -->
         <template v-if="pastEvents">
           <ul class="h-full past-events-grid">
             <li v-for="event in pastEvents" :key="event.slug">
@@ -76,27 +62,6 @@ export default {
       selectedYear: new Date().getFullYear(),
     }
   },
-  // computed: {
-  //   yearEvents() {
-  //     return this.pastEvents.filter((event) => {
-  //       const eventDate = new Date(event.date)
-  //       const eventYear = eventDate.getFullYear()
-  //       return eventYear === this.selectedYear
-  //     })
-  //   },
-  //   years() {
-  //     const allYears = this.pastEvents.map((event) => {
-  //       const date = new Date(event.date)
-  //       return date.getFullYear()
-  //     })
-  //     return [...new Set(allYears)]
-  //   },
-  // },
-  // methods: {
-  //   loadEvents(year) {
-  //     this.selectedYear = year
-  //   },
-  // },
 }
 </script>
 
