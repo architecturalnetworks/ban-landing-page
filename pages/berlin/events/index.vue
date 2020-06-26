@@ -69,6 +69,11 @@ export default {
 ul.past-events-grid {
   display: grid;
   grid-gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+@screen sm {
+  ul.past-events-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
 }
 </style>
