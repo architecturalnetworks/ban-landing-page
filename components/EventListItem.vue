@@ -42,17 +42,6 @@
             <span v-else
               ><icon-location class="w-4 h-4" />{{ event.location }}</span
             >
-            <!-- ·
-        <span v-if="event.status === 'Past' && event.attendees"
-          >{{ event.attendees }}+ attendees</span
-        >
-        <span v-else
-          ><a
-            :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
-            target="blank"
-            >register</a
-          ></span
-        > -->
           </p>
         </div>
       </div>
