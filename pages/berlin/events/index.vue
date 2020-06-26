@@ -1,7 +1,7 @@
 <template>
   <div>
     <section>
-      <h1 class="text-4xl font-bold">
+      <h1 class="text-2xl font-bold">
         Events<span class="font-normal text-red-600 font-logo"> next</span>
       </h1>
       <div class="h-6" />
