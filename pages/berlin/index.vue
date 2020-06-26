@@ -51,7 +51,7 @@
           </p>
         </div>
         <div class="h-4" />
-        <event-list-home :events="events" />
+        <event-list-future :events="events" />
       </div>
       <div class="h-8" />
     </section>
