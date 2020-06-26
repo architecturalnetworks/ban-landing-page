@@ -85,20 +85,4 @@ export default {
 }
 </script>
 
-<style scoped>
-article {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-/* article.future-event-card {
-  grid-template-rows: 200px auto;
-} */
-article.past-event-card {
-  grid-template-rows: 150px auto;
-}
-@screen lg {
-  article.past-event-card {
-    grid-template-rows: 120px auto;
-  }
-}
-</style>
+<style scoped></style>
