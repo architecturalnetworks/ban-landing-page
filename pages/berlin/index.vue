@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="px-4 sm:px-8">
-      <header class="max-w-4xl pt-4 mx-auto">
+    <div class="max-w-4xl px-4 pt-4 mx-auto sm:px-8">
+      <header>
         <nav-bar />
         <div class="h-8 md:h-20" />
         <!-- HERO -->
@@ -9,9 +9,7 @@
       </header>
 
       <div class="h-12 md:h-20" />
-      <section
-        class="max-w-xl mx-auto text-lg leading-tight text-center md:text-xl"
-      >
+      <section class="text-lg leading-tight text-center md:text-xl">
         <h1 class="font-bold">
           <span class="text-red-600 font-logo">&middot;ban </span
           >{{ homeCopy.title }}
