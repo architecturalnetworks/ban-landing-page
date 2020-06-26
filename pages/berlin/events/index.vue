@@ -6,12 +6,7 @@
       </h1>
       <div class="h-6" />
       <template v-if="futureEvents">
-        <event-list-item-next :event="futureEvents[0]" image-size="large" />
-        <div class="h-6" />
-        <event-list
-          v-if="futureEvents.length > 1"
-          :events="futureEvents.slice(1)"
-        />
+        <event-list-future :events="futureEvents" />
       </template>
 
       <div class="h-12" />
