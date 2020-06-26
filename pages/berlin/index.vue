@@ -52,13 +52,6 @@
         </div>
         <div class="h-4" />
         <event-list-home :events="events" />
-        <div class="md:hidden">
-          <div class="h-8" />
-          <p class="pl-4">
-            Any ideas for an event?
-            <a href="mailto:berlin@architecturalnetworks.com">Let us know!</a>
-          </p>
-        </div>
       </div>
       <div class="h-8" />
     </section>
