@@ -12,38 +12,39 @@
         <img :src="imageURL" class="object-cover w-full h-full"
       /></a>
     </figure>
-    <main>
-      <div class="p-4">
-        <div id="type-date" class="flex justify-between pb-3 font-logo">
-          <event-type :type="event.type" />
-          <p class="text-red-600">
-            {{ $dateFns.format(new Date(event.date), dateFormat) }}
-          </p>
-        </div>
+    <main class="p-4">
+      <div id="type-date" class="flex justify-between pb-3 font-logo">
+        <event-type :type="event.type" />
+        <p class="text-red-600">
+          {{ $dateFns.format(new Date(event.date), dateFormat) }}
+        </p>
+      </div>
 
-        <div id="title">
-          <h3 class="font-bold">
-            <a
-              :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
-              target="blank"
-              >{{ event.title }}</a
-            >
-          </h3>
-          <div v-if="event.status === 'Future'" class="hidden sm:block">
-            <v-clamp autoresize :max-lines="2">{{ event.subtitle }}</v-clamp>
-          </div>
+      <div id="title">
+        <h3 class="font-bold">
+          <a
+            :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
+            target="blank"
+            >{{ event.title }}</a
+          >
+        </h3>
+        <div v-if="event.status === 'Future'" class="hidden sm:block">
+          <v-clamp autoresize :max-lines="2">{{ event.subtitle }}</v-clamp>
         </div>
-        <div v-if="event.status === 'Future'" id="location">
-          <div class="h-4" />
-          <p>
-            <span v-if="event.onlineEvent"
-              ><icon-video class="w-4 h-4" /> Online Event</span
-            >
-            <span v-else
-              ><icon-location class="w-4 h-4" />{{ event.location }}</span
-            >
-          </p>
-        </div>
+      </div>
+      <div id="location" :class="{ 'text-sm': event.status === 'Past' }">
+        <div class="h-4" />
+        <p>
+          <span v-if="event.onlineEvent"
+            ><icon-video class="w-4 h-4" /> Online Event</span
+          >
+          <span v-else
+            ><icon-location
+              class="w-4 h-4"
+              :class="{ 'pb-1': event.status === 'Past' }"
+            />{{ event.location }}</span
+          >
+        </p>
       </div>
     </main>
   </article>
@@ -74,4 +75,13 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+article {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+main {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+</style>
