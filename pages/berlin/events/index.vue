@@ -34,7 +34,11 @@
             <div class="h-4" />
           </aside> -->
         <template v-if="pastEvents">
-          <event-list :events="pastEvents" :is-past="true" />
+          <ul class="h-full past-events-grid">
+            <li v-for="event in pastEvents" :key="event.slug">
+              <event-list-item :event="event" />
+            </li>
+          </ul>
         </template>
 
         <div class="h-10" />
@@ -95,3 +99,11 @@ export default {
   // },
 }
 </script>
+
+<style scoped>
+ul.past-events-grid {
+  display: grid;
+  grid-gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+</style>
