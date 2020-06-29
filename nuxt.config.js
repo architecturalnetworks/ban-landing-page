@@ -68,6 +68,12 @@ export default {
         methods: ['format', 'formatDistanceToNow'],
       },
     ],
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: 'UA-171122557-1',
+      },
+    ],
   ],
   components: true,
   /*
