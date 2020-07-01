@@ -11,9 +11,7 @@
 
     <div id="type-date" class="flex justify-between px-4 py-4 md:pl-0">
       <event-type :type="event.type" />
-      <p class="text-right text-red-600 font-logo">
-        {{ $dateFns.format(new Date(event.date), 'd.M H:m') }}
-      </p>
+      <event-date :date="event.date" class="text-right" />
     </div>
     <div id="title" class="px-4 pb-4 md:pl-0">
       <h3 class="font-bold">
