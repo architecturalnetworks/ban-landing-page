@@ -15,9 +15,7 @@
     <main class="p-4">
       <div id="type-date" class="flex justify-between pb-3 font-logo">
         <event-type :type="event.type" />
-        <p class="text-red-600">
-          {{ $dateFns.format(new Date(event.date), dateFormat) }}
-        </p>
+        <event-date :date="event.date" :show-time="isFuture" />
       </div>
 
       <div id="title">
@@ -69,8 +67,13 @@ export default {
   data() {
     return {
       imageURL: `${process.env.NUXT_ENV_CLOUDINARY_BASE_URL}/ar_1.5,c_crop,dpr_auto,f_auto,g_center${this.event.image}`,
-      dateFormat: this.event.status === 'Past' ? 'd.M.yy' : 'd.M H:m', // 'MMM do H:m',
+      // dateFormat: this.event.status === 'Past' ? 'd.M.yy' : 'd.M H:m', // 'MMM do H:m',
     }
+  },
+  computed: {
+    isFuture() {
+      return this.event.status === 'Future'
+    },
   },
 }
 </script>
