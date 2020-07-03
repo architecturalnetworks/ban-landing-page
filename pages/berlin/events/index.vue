@@ -17,7 +17,7 @@
         <h2 class="font-bold">
           Events<span class="font-normal text-red-600 font-logo"> past</span>
         </h2>
-        <div class="h-4" />
+        <div class="h-6" />
 
         <template v-if="pastEvents">
           <ul class="h-full past-events-grid">
