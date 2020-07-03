@@ -1,7 +1,7 @@
 <template>
   <div>
     <section>
-      <h1 class="text-2xl font-bold">
+      <h1 class="font-bold">
         Events<span class="font-normal text-red-600 font-logo"> next</span>
       </h1>
       <div class="h-6" />
@@ -14,10 +14,10 @@
     <section class="bg-gray-100 full-width">
       <div class="max-w-4xl px-4 mx-auto sm:px-8">
         <div class="h-10" />
-        <h2 class="text-2xl font-bold">
+        <h2 class="font-bold">
           Events<span class="font-normal text-red-600 font-logo"> past</span>
         </h2>
-        <div class="h-4" />
+        <div class="h-6" />
 
         <template v-if="pastEvents">
           <ul class="h-full past-events-grid">
@@ -69,7 +69,7 @@ export default {
 ul.past-events-grid {
   display: grid;
   grid-gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 @screen sm {
   ul.past-events-grid {
