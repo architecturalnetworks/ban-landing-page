@@ -1,7 +1,7 @@
 ---
-date: 2020-07-06T19:00:01+02:00
-attendees: 0
-status: Future
+date: 2020-07-06T19:00:01.000+02:00
+attendees: 
+status: Past
 type: talks
 title: Circular Economy in Construction
 subtitle: A talk with Dina Padalkina from Circular Berlin
