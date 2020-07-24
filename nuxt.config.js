@@ -96,7 +96,12 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {},
+    extend(config, ctx) {
+      // for debugging on vs-code chrome debugger
+      if (ctx.isDev) {
+        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+      }
+    },
     transpile: ['vue-clamp', 'resize-detector'],
   },
 }
