@@ -74,6 +74,7 @@ export default {
         id: 'UA-171122557-1',
       },
     ],
+    'nuxt-composition-api',
   ],
   components: true,
   /*
