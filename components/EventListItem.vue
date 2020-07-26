@@ -4,13 +4,9 @@
     :class="eventIsPast ? 'past-event-card' : 'future-event-card'"
   >
     <figure id="image" class="overflow-hidden">
-      <a
-        :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${content.meetupId}/`"
-        target="blank"
-        class="no-underline"
-      >
-        <img :src="imageURL" class="object-cover w-full h-full"
-      /></a>
+      <nuxt-link :to="`/berlin/events/${event.slug}`" class="no-underline"
+        ><img :src="imageURL" class="object-cover w-full h-full"
+      /></nuxt-link>
     </figure>
     <main class="p-4">
       <div id="type-date" class="flex justify-between pb-3 font-logo">
@@ -20,10 +16,15 @@
 
       <div id="title">
         <h3 class="font-bold">
-          <a
-            :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${content.meetupId}/`"
-            target="blank"
-            >{{ content.title }}</a
+          <!-- <a
+          :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${content.meetupId}/`"
+          target="blank"
+          >{{ content.title }}</a
+        > -->
+          <nuxt-link
+            :to="`/berlin/events/${event.slug}`"
+            class="no-underline"
+            >{{ content.title }}</nuxt-link
           >
         </h3>
         <div v-if="!eventIsPast" class="hidden sm:block">
