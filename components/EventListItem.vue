@@ -1,46 +1,47 @@
 <template>
   <article
     class="w-full h-full bg-white shadow-lg"
-    :class="event.status === 'Past' ? 'past-event-card' : 'future-event-card'"
+    :class="eventIsPast ? 'past-event-card' : 'future-event-card'"
   >
     <figure id="image" class="overflow-hidden">
-      <a
-        :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
-        target="blank"
-        class="no-underline"
-      >
-        <img :src="imageURL" class="object-cover w-full h-full"
-      /></a>
+      <nuxt-link :to="`/berlin/events/${event.slug}`" class="no-underline"
+        ><img :src="imageURL" class="object-cover w-full h-full"
+      /></nuxt-link>
     </figure>
     <main class="p-4">
       <div id="type-date" class="flex justify-between pb-3 font-logo">
-        <event-type :type="event.type" />
-        <event-date :date="event.date" :show-time="isFuture" />
+        <event-type :type="content.type" />
+        <event-date :date="content.date" :show-time="!eventIsPast" />
       </div>
 
       <div id="title">
         <h3 class="font-bold">
-          <a
-            :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
-            target="blank"
-            >{{ event.title }}</a
+          <!-- <a
+          :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${content.meetupId}/`"
+          target="blank"
+          >{{ content.title }}</a
+        > -->
+          <nuxt-link
+            :to="`/berlin/events/${event.slug}`"
+            class="no-underline"
+            >{{ content.title }}</nuxt-link
           >
         </h3>
-        <div v-if="event.status === 'Future'" class="hidden sm:block">
-          <v-clamp autoresize :max-lines="2">{{ event.subtitle }}</v-clamp>
+        <div v-if="!eventIsPast" class="hidden sm:block">
+          <v-clamp autoresize :max-lines="2">{{ content.subtitle }}</v-clamp>
         </div>
       </div>
-      <div id="location" :class="{ 'text-sm': event.status === 'Past' }">
+      <div id="location" :class="{ 'text-sm': eventIsPast }">
         <div class="h-4" />
         <p>
-          <span v-if="event.onlineEvent"
+          <span v-if="content.is_online"
             ><icon-video class="w-4 h-4" /> Online Event</span
           >
           <span v-else
             ><icon-location
               class="w-4 h-4"
-              :class="{ 'pb-1': event.status === 'Past' }"
-            />{{ event.location }}</span
+              :class="{ 'pb-1': eventIsPast }"
+            />{{ content.location }}</span
           >
         </p>
       </div>
@@ -50,10 +51,11 @@
 
 <script>
 import VClamp from 'vue-clamp'
-export default {
-  components: {
-    VClamp,
-  },
+import { defineComponent } from 'nuxt-composition-api'
+import { isPast } from 'date-fns'
+import useCloudinaryURL from '@/use/cloudinaryURL'
+
+export default defineComponent({
   props: {
     event: {
       type: Object,
@@ -64,18 +66,23 @@ export default {
       default: false,
     },
   },
-  data() {
+  components: {
+    VClamp,
+  },
+  setup(props) {
+    const { content } = props.event
+    const imageURL = useCloudinaryURL(
+      content.main_image.filename,
+      'ar_1.5,c_crop,dpr_auto,f_auto,g_center'
+    )
+    const eventIsPast = isPast(new Date(content.date))
     return {
-      imageURL: `${process.env.NUXT_ENV_CLOUDINARY_BASE_URL}/ar_1.5,c_crop,dpr_auto,f_auto,g_center${this.event.image}`,
-      // dateFormat: this.event.status === 'Past' ? 'd.M.yy' : 'd.M H:m', // 'MMM do H:m',
+      imageURL,
+      eventIsPast,
+      content,
     }
   },
-  computed: {
-    isFuture() {
-      return this.event.status === 'Future'
-    },
-  },
-}
+})
 </script>
 
 <style scoped>

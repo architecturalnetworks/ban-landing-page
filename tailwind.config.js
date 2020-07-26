@@ -23,5 +23,5 @@ module.exports = {
     opacity: ['responsive', 'hover', 'focus', 'disabled'],
     cursor: ['responsive', 'disabled'],
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }

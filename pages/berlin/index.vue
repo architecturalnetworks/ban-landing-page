@@ -11,12 +11,12 @@
       <div class="h-12 md:h-20" />
       <section class="text-lg leading-tight text-center md:text-xl">
         <h1 class="font-bold">
-          <span class="text-red-600 font-logo">&middot;ban </span
-          >{{ homeCopy.title }}
+          <span class="text-red-600 font-logo">&middot;ban</span>
+          {{ homeCopy.title }}
         </h1>
         <p>{{ homeCopy.tagline }}</p>
         <div class="h-12" />
-        <div class="">
+        <div class>
           <email-form :text="homeCopy" />
         </div>
       </section>
@@ -34,9 +34,8 @@
       <div class="h-12 sm:h-16" />
     </div>
     <!-- EVENTS -->
-    <section class="px-4 pb-8 sm:px-8">
+    <section class="px-4 pb-8 sm:px-8" v-if="state.value === 'fetched'">
       <div class="max-w-4xl mx-auto">
-        <!-- <div class="w-12 mb-1 border-t-2 border-red-600" /> -->
         <div class="flex items-center justify-between">
           <h2 class="font-bold">
             <nuxt-link to="/berlin/events" class="no-underline"
@@ -49,7 +48,7 @@
           </p>
         </div>
         <div class="h-4" />
-        <event-list-future :events="events" />
+        <event-list-future :events="state.context.futureEvents" />
       </div>
       <div class="h-8" />
     </section>
@@ -71,25 +70,39 @@
 </template>
 
 <script>
-export default {
-  async asyncData({ $content }) {
-    const homeCopy = await $content('homeCopy').fetch()
-    const about = await $content('homeAbout').fetch()
-    const events = await $content('events')
-      .where({
-        publish: true,
-        status: 'Future',
-      })
-      .sortBy('date', 'asc')
-      .fetch()
+import {
+  defineComponent,
+  ref,
+  useFetch,
+  useContext,
+  computed,
+} from 'nuxt-composition-api'
+import { eventMachineVue } from '@/fsm/eventMachine'
 
+export default defineComponent({
+  setup() {
+    const { $content } = useContext()
+    const homeCopy = ref({})
+    const about = ref({})
+    useFetch(async () => {
+      homeCopy.value = await $content('homeCopy').fetch()
+      about.value = await $content('homeAbout').fetch()
+    })
+    const state = computed(() => {
+      return eventMachineVue.current
+    })
+    const context = computed(() => {
+      return eventMachineVue.context
+    })
+    eventMachineVue.send({ type: 'FETCH_FUTURE' })
     return {
-      about,
-      events,
       homeCopy,
+      about,
+      state,
+      context,
     }
   },
-}
+})
 </script>
 
 <style></style>

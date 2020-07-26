@@ -1,5 +1,5 @@
 <template>
-  <footer class="p-6 text-white bg-black mt-auto">
+  <footer class="p-6 text-white bg-black">
     <ul class="flex items-center justify-center space-x-6">
       <li>
         <a href="mailto:berlin@architecturalnetworks.com" class="link-none"

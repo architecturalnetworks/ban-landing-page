@@ -12,6 +12,15 @@ a:active,
   @apply text-red-600 underline;
 }
 
+.btn-link {
+  @apply no-underline;
+}
+
+.btn-link:hover,
+.btn-link.active {
+  @apply text-white underline;
+}
+
 .full-width {
   width: 100vw;
   position: relative;
@@ -19,4 +28,9 @@ a:active,
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
