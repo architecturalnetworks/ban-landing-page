@@ -8,7 +8,6 @@ export const eventMachine = Machine(
   {
     id: 'EventMachine',
     context: {
-      eventId: null,
       event: null,
       futureEvents: [],
       pastEvents: [],
@@ -16,12 +15,7 @@ export const eventMachine = Machine(
     },
     initial: 'idle',
     states: {
-      idle: {
-        on: {
-          FETCH_ALL: 'fetchingAll',
-          FETCH_FUTURE: 'fetchingFuture',
-        },
-      },
+      idle: {},
       fetchingFuture: {
         invoke: {
           id: 'invoke-fetch-future',
@@ -50,13 +44,27 @@ export const eventMachine = Machine(
           },
         },
       },
-      failed: {},
-      fetched: {
-        on: {
-          FETCH_ALL: 'fetchingAll',
-          FETCH_FUTURE: 'fetchingFuture',
+      fetchingOne: {
+        invoke: {
+          id: 'invoke-fetch-one',
+          src: invokeFetchOne,
+          onDone: {
+            actions: ['setEvent'],
+            target: 'fetched',
+          },
+          onError: {
+            actions: ['setError'],
+            target: 'failed',
+          },
         },
       },
+      failed: {},
+      fetched: {},
+    },
+    on: {
+      FETCH_ALL: 'fetchingAll',
+      FETCH_FUTURE: 'fetchingFuture',
+      FETCH_ONE: 'fetchingOne',
     },
   },
   {
@@ -85,6 +93,7 @@ export const eventFragment = gql`
   fragment eventItem on EventItem {
     id
     slug
+    full_slug
     content {
       type
       title
@@ -92,7 +101,6 @@ export const eventFragment = gql`
       summary
       meetup_id
       location
-      description
       main_image {
         filename
       }
@@ -102,13 +110,37 @@ export const eventFragment = gql`
   }
 `
 
+async function invokeFetchOne(_, event) {
+  // 2019-12-24 09:00
+  const {
+    params: { id },
+  } = event
+  const { data } = await client.query({
+    query: gql`
+      query event($id: ID!) {
+        EventItem(id: $id) {
+          ...eventItem
+          content {
+            description
+            guests
+          }
+        }
+      }
+      ${eventFragment}
+    `,
+    variables: {
+      id,
+    },
+  })
+  return data.EventItem
+}
 async function invokeFetchFuture() {
   // 2019-12-24 09:00
   const yesterday = format(endOfYesterday(), 'yyyy-MM-dd HH:mm')
   const { data } = await client.query({
     query: gql`
       query futureEvents {
-        futureEvents:EventItems(filter_query: { date: { gt_date: "${yesterday}" } }) {
+        futureEvents:EventItems(sort_by: "content.date:asc", filter_query: { date: { gt_date: "${yesterday}" } }) {
           items {
             ...eventItem
           }
@@ -124,12 +156,12 @@ async function invokeFetchAll() {
   const { data } = await client.query({
     query: gql`
       query allEvents {
-        futureEvents:EventItems(filter_query: { date: { gt_date: "${yesterday}" } }) {
+        futureEvents:EventItems(sort_by: "content.date:asc", filter_query: { date: { gt_date: "${yesterday}" } }) {
           items {
             ...eventItem
           }
         }
-        pastEvents:EventItems(filter_query: { date: { lt_date: "${yesterday}" } }) {
+        pastEvents:EventItems(sort_by: "content.date:desc", filter_query: { date: { lt_date: "${yesterday}" } }) {
           items {
             ...eventItem
           }
