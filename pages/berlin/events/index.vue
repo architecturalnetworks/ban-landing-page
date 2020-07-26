@@ -1,5 +1,10 @@
 <template>
   <div>
+    <nav class="mb-2 text-xs">
+      <ul class="flex space-x-2">
+        <li><nuxt-link to="/berlin">Home</nuxt-link></li>
+      </ul>
+    </nav>
     <section>
       <h1 class="font-bold">
         Events<span class="font-normal text-red-600 font-logo"> next</span>

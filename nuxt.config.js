@@ -86,7 +86,11 @@ export default {
     '@nuxt/content',
     'nuxt-rfg-icon',
     '@nuxtjs/manifest',
+    '@nuxtjs/markdownit',
   ],
+  markdownit: {
+    injected: true,
+  },
   content: {
     // Options
   },
@@ -101,6 +105,9 @@ export default {
       // for debugging on vs-code chrome debugger
       if (ctx.isDev) {
         config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+      }
+      config.node = {
+        fs: 'empty',
       }
     },
     transpile: ['vue-clamp', 'resize-detector'],
