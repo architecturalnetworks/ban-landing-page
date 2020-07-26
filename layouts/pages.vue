@@ -1,16 +1,14 @@
 <template>
-  <div class="w-full h-full">
-    <div class="max-w-4xl px-4 py-4 mx-auto sm:px-8">
-      <header>
-        <nav-bar />
-      </header>
-    </div>
-    <div class="max-w-4xl px-4 mx-auto sm:px-8">
+  <div class="w-full h-full layout-grid">
+    <header class="w-full max-w-4xl px-4 py-4 mx-auto sm:px-8">
+      <nav-bar class="w-full" />
+    </header>
+
+    <main class="w-full max-w-4xl px-4 mx-auto sm:px-8">
       <div class="h-12" />
-      <main class="flex-1">
-        <nuxt />
-      </main>
-    </div>
+      <nuxt />
+    </main>
+
     <base-footer />
   </div>
 </template>
