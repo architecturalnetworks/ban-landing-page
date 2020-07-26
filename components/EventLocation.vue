@@ -7,9 +7,11 @@
 
 <script>
 export default {
-  location: {
-    type: String,
-    default: null,
+  props: {
+    location: {
+      type: String,
+      default: null,
+    },
   },
 }
 </script>
