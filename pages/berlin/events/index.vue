@@ -44,7 +44,7 @@
 
 <script>
 import { defineComponent, computed } from 'nuxt-composition-api'
-import { eventMachineVue } from '@/fsm/EventMachine'
+import { eventMachineVue } from '../../../fsm/EventMachine'
 export default defineComponent({
   layout: 'pages',
   setup() {
