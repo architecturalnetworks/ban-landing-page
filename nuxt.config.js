@@ -105,9 +105,6 @@ export default {
       if (ctx.isDev) {
         config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
       }
-      config.node = {
-        fs: 'empty',
-      }
     },
     transpile: ['vue-clamp', 'resize-detector'],
   },
