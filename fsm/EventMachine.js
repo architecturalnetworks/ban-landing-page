@@ -1,10 +1,10 @@
 import gql from 'graphql-tag'
 import { Machine, assign } from 'xstate'
 import { endOfYesterday, format } from 'date-fns'
-import { generateVueMachine } from './generateVueMachine'
 import { client } from '@/plugins/apollo'
+import { generateVueMachine } from './generateVueMachine'
 
-export const eventMachine = Machine(
+const machine = Machine(
   {
     id: 'EventMachine',
     context: {
@@ -176,4 +176,4 @@ async function invokeFetchAll() {
   }
 }
 
-export const eventMachineVue = generateVueMachine(eventMachine)
+export const eventMachineVue = generateVueMachine(machine)

@@ -34,7 +34,7 @@
       <div class="h-12 sm:h-16" />
     </div>
     <!-- EVENTS -->
-    <section class="px-4 pb-8 sm:px-8" v-if="state.value === 'fetched'">
+    <section v-if="state.value === 'fetched'" class="px-4 pb-8 sm:px-8">
       <div class="max-w-4xl mx-auto">
         <div class="flex items-center justify-between">
           <h2 class="font-bold">
@@ -77,7 +77,7 @@ import {
   useContext,
   computed,
 } from 'nuxt-composition-api'
-import { eventMachineVue } from '../../fsm/EventMachine'
+import { eventMachineVue } from '@/fsm/eventMachine'
 
 export default defineComponent({
   setup() {
