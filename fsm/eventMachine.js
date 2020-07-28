@@ -11,6 +11,7 @@ const machine = Machine(
       event: null,
       futureEvents: [],
       pastEvents: [],
+      paginationEvents: [],
       error: null,
     },
     initial: 'idle',
@@ -49,7 +50,7 @@ const machine = Machine(
           id: 'invoke-fetch-one',
           src: invokeFetchOne,
           onDone: {
-            actions: ['setEvent'],
+            actions: ['setEvent', 'setPaginationEvents'],
             target: 'fetched',
           },
           onError: {
@@ -70,7 +71,10 @@ const machine = Machine(
   {
     actions: {
       setEvent: assign({
-        event: (_, event) => event.data,
+        event: (_, event) => event.data.event,
+      }),
+      setPaginationEvents: assign({
+        paginationEvents: (_, event) => event.data.paginationEvents,
       }),
       setEvents: assign({
         events: (_, event) => event.data,
@@ -124,6 +128,13 @@ async function invokeFetchOne(_, event) {
             description
             guests
             resources
+            attendees
+          }
+        }
+        EventItems(sort_by: "content.date:desc") {
+          items {
+            id
+            slug
           }
         }
       }
@@ -133,7 +144,7 @@ async function invokeFetchOne(_, event) {
       id,
     },
   })
-  return data.EventItem
+  return { event: data.EventItem, paginationEvents: data.EventItems.items }
 }
 async function invokeFetchFuture() {
   // 2019-12-24 09:00

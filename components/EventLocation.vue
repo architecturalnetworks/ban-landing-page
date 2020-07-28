@@ -1,5 +1,5 @@
 <template>
-  <div id="location" class="px-4 pb-6 md:pl-0">
+  <div id="location">
     <p v-if="location"><icon-location class="w-4 h-4" /> {{ location }}</p>
     <p v-else><icon-video class="w-4 h-4" /> Online Event</p>
   </div>

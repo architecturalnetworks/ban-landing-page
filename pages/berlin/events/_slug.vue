@@ -22,44 +22,44 @@
         <img :src="imageURL" class="object-cover w-full h-full" />
       </section>
       <div class="h-4" />
-      <section class="flex space-x-8">
+
+      <section class="space-y-8 md:flex md:space-x-8 md:space-y-0">
         <!-- DESCRIPTION  -->
-        <article class="w-2/3 prose">
+        <article class="prose md:w-2/3">
           <div v-html="$md.render(context.event.content.description)" />
         </article>
         <!-- SIDEBAR  -->
-        <aside class="w-1/3">
-          <div class="h-6" />
-          <!-- REGISTER BUTTON  -->
-          <section v-if="eventIsFuture" name="register-cta">
-            <a
-              :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${context.event.content.meetup_id}/`"
-              target="blank"
-              class="flex items-center justify-center w-full h-10 p-1 space-x-2 text-lg tracking-wide text-white uppercase bg-red-600 shadow font-logo sm:h-12 sm:text-lg btn-link"
-            >
-              <span>I'm in!</span><icon-external-link class="w-4 h-4 mb-1" />
-            </a>
-            <p class="text-sm text-center">
-              RSVP on meetup.com
-            </p>
-            <div class="h-12" />
-          </section>
-          <!-- DETAILS  -->
-          <section>
-            <h2 class="font-bold">Details</h2>
-            <div class="h-4" />
-            <event-type :type="context.event.content.type" />
-            <div class="pl-4">
-              <event-date
-                :date="context.event.content.date"
-                class="text-black"
-                :is-long="true"
+        <aside class="md:pt-6 md:w-1/3">
+          <!-- DETAILS  for larger screens-->
+          <section
+            class="hidden px-4 py-6 mb-12 overflow-hidden border rounded md:block"
+          >
+            <div>
+              <event-type :type="context.event.content.type" />
+              <div class="pl-4">
+                <event-date
+                  :date="context.event.content.date"
+                  class="mb-4 text-black"
+                  :is-long="true"
+                />
+                <event-location
+                  :location="context.event.content.location"
+                  class="mb-8 text-sm"
+                />
+              </div>
+              <event-register
+                v-if="eventIsFuture"
+                :meetup-id="context.event.content.meetup_id"
+                class="-mx-4 -mb-6"
               />
-              <event-location :location="context.event.content.location" />
+              <event-attendees
+                v-else
+                :meetup-id="context.event.content.meetup_id"
+                :attendees="context.event.content.attendees"
+                class="ml-4 -mt-8 text-sm"
+              />
             </div>
           </section>
-          <div class="h-12" />
-
           <!-- GUESTS  -->
           <event-guest-list
             v-if="
@@ -67,17 +67,71 @@
               context.event.content.guests.length
             "
             :guests="context.event.content.guests"
+            class="mb-12"
           />
-          <div class="h-12" />
 
           <!-- RESOURCES  -->
           <event-resource-list
             v-if="context.event.content.resources.length > 0"
             :resources="context.event.content.resources"
           />
+          <!-- DETAILS for smaller screens, hidden from md breakpoint  -->
+          <section class="p-4 my-8 overflow-hidden border rounded md:hidden">
+            <div class="flex justify-between">
+              <div>
+                <event-type :type="context.event.content.type" />
+
+                <event-date
+                  :date="context.event.content.date"
+                  class="ml-4 text-black"
+                  :is-long="true"
+                />
+                <event-location
+                  :location="context.event.content.location"
+                  class="mt-4 mb-6 ml-4"
+                  v-if="eventIsFuture"
+                />
+              </div>
+              <div>
+                <event-location
+                  :location="context.event.content.location"
+                  class="text-sm"
+                  v-if="!eventIsFuture"
+                />
+
+                <event-attendees
+                  v-if="!eventIsFuture"
+                  :meetup-id="context.event.content.meetup_id"
+                  :attendees="context.event.content.attendees"
+                  class="text-sm"
+                />
+              </div>
+            </div>
+            <event-register
+              v-if="eventIsFuture"
+              :meetup-id="context.event.content.meetup_id"
+              class="-mx-4 -mb-4"
+            />
+          </section>
         </aside>
       </section>
-      <div class="h-12" />
+
+      <section class="my-8">
+        <nav>
+          <ul class="flex justify-between">
+            <li>
+              <nuxt-link v-if="nextEventSlug" :to="nextEventSlug"
+                >&lt; Previous</nuxt-link
+              >
+            </li>
+            <li>
+              <nuxt-link v-if="previousEventSlug" :to="previousEventSlug"
+                >Next &gt;</nuxt-link
+              >
+            </li>
+          </ul>
+        </nav>
+      </section>
     </template>
   </div>
 </template>
@@ -105,6 +159,8 @@ export default defineComponent({
     })
     const imageURL = ref('')
     const eventIsFuture = ref('')
+    const nextEventSlug = ref('')
+    const previousEventSlug = ref('')
     watch(context, (context, _) => {
       if (context.event) {
         imageURL.value = useCloudinaryURL(
@@ -112,6 +168,18 @@ export default defineComponent({
           'ar_1.5,c_crop,dpr_auto,f_auto,g_center'
         )
         eventIsFuture.value = isFuture(new Date(context.event.content.date))
+        const currentEventIndex = getEventIndex(
+          context.event.slug,
+          context.paginationEvents
+        )
+        nextEventSlug.value = getNextEventSlug(
+          currentEventIndex,
+          context.paginationEvents
+        )
+        previousEventSlug.value = getPreviousEventSlug(
+          currentEventIndex,
+          context.paginationEvents
+        )
       }
     })
 
@@ -122,9 +190,22 @@ export default defineComponent({
       context,
       imageURL,
       eventIsFuture,
+      nextEventSlug,
+      previousEventSlug,
     }
   },
 })
+function getEventIndex(currentEventSlug, paginationEvents) {
+  return paginationEvents.findIndex((evt) => evt.slug === currentEventSlug)
+}
+function getNextEventSlug(currentEventIndex, paginationEvents) {
+  if (currentEventIndex === paginationEvents.length - 1) return null
+  return paginationEvents[currentEventIndex + 1].slug
+}
+function getPreviousEventSlug(currentEventIndex, paginationEvents) {
+  if (currentEventIndex === 0) return null
+  return paginationEvents[currentEventIndex - 1].slug
+}
 </script>
 
 <style scoped>

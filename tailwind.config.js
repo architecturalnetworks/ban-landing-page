@@ -19,6 +19,13 @@ module.exports = {
         focus: '0 0 0 3px rgba(236,201,75,1)',
       },
     },
+    typography: {
+      default: {
+        css: {
+          color: '#1A202C',
+        },
+      },
+    },
   },
   variants: {
     opacity: ['responsive', 'hover', 'focus', 'disabled'],
