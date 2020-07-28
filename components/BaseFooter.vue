@@ -2,6 +2,18 @@
   <footer class="p-6 text-white bg-black">
     <ul class="flex items-center justify-center space-x-6">
       <li>
+        <nuxt-link to="Home">Home</nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="Home">Events</nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="Home">About</nuxt-link>
+      </li>
+    </ul>
+    <div class="h-6"></div>
+    <ul class="flex items-center justify-center space-x-6">
+      <li>
         <a href="mailto:berlin@architecturalnetworks.com" class="link-none"
           ><email-icon class="w-6 h-6"
         /></a>
