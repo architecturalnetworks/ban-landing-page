@@ -77,7 +77,7 @@ import {
   useContext,
   computed,
 } from 'nuxt-composition-api'
-import { eventMachineVue } from '@/fsm/eventMachine'
+import { eventMachineVue } from '~/fsm/eventMachine'
 
 export default defineComponent({
   setup() {

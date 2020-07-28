@@ -88,8 +88,8 @@ import {
   watch,
 } from 'nuxt-composition-api'
 import { isFuture } from 'date-fns'
-import { eventMachineVue } from '@/fsm/eventMachine'
-import useCloudinaryURL from '@/use/cloudinaryURL'
+import { eventMachineVue } from '~/fsm/eventMachine.js'
+import useCloudinaryURL from '~/use/cloudinaryURL'
 export default defineComponent({
   layout: 'pages',
   setup() {
