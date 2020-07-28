@@ -123,6 +123,7 @@ async function invokeFetchOne(_, event) {
           content {
             description
             guests
+            resources
           }
         }
       }

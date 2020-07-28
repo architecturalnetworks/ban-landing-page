@@ -23,12 +23,14 @@
       </section>
       <div class="h-4" />
       <section class="flex space-x-8">
+        <!-- DESCRIPTION  -->
         <article class="w-2/3 prose">
           <div v-html="$md.render(context.event.content.description)" />
         </article>
-
+        <!-- SIDEBAR  -->
         <aside class="w-1/3">
           <div class="h-6" />
+          <!-- REGISTER BUTTON  -->
           <section v-if="eventIsFuture" name="register-cta">
             <a
               :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${context.event.content.meetup_id}/`"
@@ -40,10 +42,9 @@
             <p class="text-sm text-center">
               RSVP on meetup.com
             </p>
-            <div class="h-6" />
-            <hr />
-            <div class="h-6" />
+            <div class="h-12" />
           </section>
+          <!-- DETAILS  -->
           <section>
             <h2 class="font-bold">Details</h2>
             <div class="h-4" />
