@@ -11,14 +11,16 @@
           ><a :href="guest.linkedin.url"><linkedin-icon class="w-4 h-4" /></a
         ></span>
       </div>
-      <p>{{ guest.title }}</p>
-      <p v-if="guest.company" class="text-gray-600">
-        @
-        <span v-if="guest.company_url.url"
-          ><a :href="guest.company_url.url">{{ guest.company }}</a></span
-        >
-        <span v-else>{{ guest.company }}</span>
-      </p>
+      <div class="text-sm">
+        <p>{{ guest.title }}</p>
+        <p v-if="guest.company" class="text-gray-600">
+          @
+          <span v-if="guest.company_url.url"
+            ><a :href="guest.company_url.url">{{ guest.company }}</a></span
+          >
+          <span v-else>{{ guest.company }}</span>
+        </p>
+      </div>
     </div>
   </div>
 </template>

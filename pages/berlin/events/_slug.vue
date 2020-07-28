@@ -57,21 +57,23 @@
               <event-location :location="context.event.content.location" />
             </div>
           </section>
+          <div class="h-12" />
 
-          <section
+          <!-- GUESTS  -->
+          <event-guest-list
             v-if="
               context.event.content.guests &&
               context.event.content.guests.length
             "
-          >
-            <div class="h-6" />
-            <h2 class="font-bold">
-              <span v-if="context.event.content.guests.length === 1">Guest</span
-              ><span v-else>Guests</span>
-            </h2>
-            <div class="h-4" />
-            <event-guest-list :guests="context.event.content.guests" />
-          </section>
+            :guests="context.event.content.guests"
+          />
+          <div class="h-12" />
+
+          <!-- RESOURCES  -->
+          <event-resource-list
+            v-if="context.event.content.resources.length > 0"
+            :resources="context.event.content.resources"
+          />
         </aside>
       </section>
       <div class="h-12" />
