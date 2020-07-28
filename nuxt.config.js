@@ -3,6 +3,7 @@ const GFONTS =
 
 export default {
   mode: 'universal',
+  target: 'static',
   /*
    ** Headers of the page
    */
@@ -50,6 +51,7 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: ['~plugins/logoComponents.js'],
+  components: true,
   /*
    ** Nuxt.js dev-modules
    */
@@ -60,8 +62,6 @@ export default {
     '@nuxtjs/stylelint-module',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
-    // https://github.com/nuxt/components
-    '@nuxt/components',
     [
       '@nuxtjs/date-fns',
       {
@@ -76,7 +76,6 @@ export default {
     ],
     'nuxt-composition-api',
   ],
-  components: true,
   /*
    ** Nuxt.js modules
    */
