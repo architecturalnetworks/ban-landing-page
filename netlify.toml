@@ -11,4 +11,3 @@
   publish = "dist"
   # Default build command.
   command = "npm run generate"
-  functions = "./functions/"
