@@ -9,7 +9,9 @@
     </nav>
     <template v-if="state.matches('fetchingOne')">
       <!-- TODO: implement loading animation -->
-      <p>Loading...</p>
+      <div class="h-full py-12">
+        <p>Loading...</p>
+      </div>
     </template>
     <template v-else>
       <section class="flex items-center justify-between">
@@ -32,7 +34,7 @@
         <aside class="md:pt-6 md:w-1/3">
           <!-- DETAILS  for larger screens-->
           <section
-            class="hidden px-4 py-6 mb-12 overflow-hidden border rounded md:block"
+            class="hidden px-4 py-6 mb-12 overflow-hidden border border-red-600 md:block"
           >
             <div>
               <event-type :type="context.event.content.type" />
@@ -53,7 +55,7 @@
                 class="-mx-4 -mb-6"
               />
               <event-attendees
-                v-else
+                v-else-if="context.event.content.attendees"
                 :meetup-id="context.event.content.meetup_id"
                 :attendees="context.event.content.attendees"
                 class="ml-4 -mt-8 text-sm"
@@ -76,7 +78,9 @@
             :resources="context.event.content.resources"
           />
           <!-- DETAILS for smaller screens, hidden from md breakpoint  -->
-          <section class="p-4 my-8 overflow-hidden border rounded md:hidden">
+          <section
+            class="p-4 my-8 overflow-hidden border border-red-600 md:hidden"
+          >
             <div class="flex justify-between">
               <div>
                 <event-type :type="context.event.content.type" />
@@ -100,7 +104,7 @@
                 />
 
                 <event-attendees
-                  v-if="!eventIsFuture"
+                  v-if="!eventIsFuture && context.event.content.attendees"
                   :meetup-id="context.event.content.meetup_id"
                   :attendees="context.event.content.attendees"
                   class="text-sm"
