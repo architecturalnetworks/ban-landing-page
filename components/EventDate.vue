@@ -1,6 +1,6 @@
 <template>
   <p class="text-red-600 font-logo">
-    {{ $dateFns.format(new Date(date), dateFormat) }}
+    {{ $dateFns.format(new Date(parsedDate), dateFormat) }}
   </p>
 </template>
 
@@ -17,6 +17,9 @@ export default {
     },
   },
   computed: {
+    parsedDate() {
+      return this.date.includes('T') ? this.date : this.date.replace(' ', 'T')
+    },
     dateFormat() {
       return this.showTime ? 'd.M · H:mm' : 'd.M.yy'
     },
