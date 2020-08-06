@@ -1,7 +1,15 @@
-# landing-page
+<p align="center">
+<img src="https://res.cloudinary.com/architecturalnetworks/image/upload/c_scale,h_200,w_200/v1596703885/ban/ban_person_01_2x_w0ruov.png" width="200" height="200"/>
+</p>
 
-> Landing page for Berlin Architectural Network [BAN]
+<h1 align="center">Berlin Architectural Network</h1>
 
+<p align="center">Website for Berlin Architectural Network [·ban]</br>
+Built with Nuxt & Storyblok.</p>
+<br>
+<br>
+
+---
 ## Build Setup
 
 ``` bash
