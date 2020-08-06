@@ -86,10 +86,16 @@ export default {
     'nuxt-rfg-icon',
     '@nuxtjs/manifest',
     '@nuxtjs/markdownit',
+    '@nuxtjs/sentry',
   ],
   markdownit: {
     injected: true,
     breaks: true,
+  },
+  sentry: {
+    dsn:
+      'https://837fdc7977b34ec88d0a4d94fc2e711d@o304029.ingest.sentry.io/5379661', // Enter your project's DSN here
+    config: {}, // Additional config
   },
   content: {
     // Options
