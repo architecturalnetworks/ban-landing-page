@@ -1,6 +1,16 @@
-# landing-page
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d21d5e47-ceae-4022-9409-44c4b9e63b01/deploy-status)](https://app.netlify.com/sites/ban-website/deploys)
 
-> Landing page for Berlin Architectural Network [BAN]
+<p align="center">
+<img src="https://res.cloudinary.com/architecturalnetworks/image/upload/c_scale,h_200,w_200/v1596703885/ban/ban_person_01_2x_w0ruov.png" width="200" height="200"/>
+</p>
+
+<h1 align="center">Berlin Architectural Network</h1>
+
+<p align="center"><a href="https://architecturalnetworks.com/berlin">🔗 architecturalnetworks.com/berlin</a></p>
+<p align="center">Website for Berlin Architectural Network [·ban]</br>
+Built with [Nuxt](https://nuxtjs.org/) & [Storyblok](https://www.storyblok.com/), hosted on [Netlify](https://netlify.com).</p>
+<br>
+<br>
 
 ## Build Setup
 
