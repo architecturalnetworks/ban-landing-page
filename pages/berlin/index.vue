@@ -34,7 +34,7 @@
       <div class="h-12 sm:h-16" />
     </div>
     <!-- EVENTS -->
-    <section v-if="state.value === 'fetched'" class="px-4 pb-8 sm:px-8">
+    <section class="px-4 pb-8 sm:px-8">
       <div class="max-w-4xl mx-auto">
         <div class="flex items-center justify-between">
           <h2 class="font-bold">
@@ -48,7 +48,12 @@
           </p>
         </div>
         <div class="h-4" />
-        <event-list-future :events="state.context.futureEvents" />
+        <template v-if="state.value === 'fetched'">
+          <event-list-future :events="state.context.futureEvents" />
+        </template>
+        <template v-else>
+          <spinner />
+        </template>
       </div>
       <div class="h-8" />
     </section>
