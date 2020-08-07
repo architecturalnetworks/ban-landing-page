@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full events-page">
+  <div class="h-full sandwich-grid">
     <!-- BREADCRUMBS  -->
     <nav class="mb-2 text-xs">
       <ul class="flex space-x-2">
@@ -82,10 +82,5 @@ ul.past-events-grid {
   ul.past-events-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
-}
-
-.events-page {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
 }
 </style>

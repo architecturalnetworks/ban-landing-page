@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full layout-grid">
+  <div class="w-full h-full sandwich-grid">
     <header class="w-full max-w-4xl px-4 py-4 mx-auto sm:px-8">
       <nav-bar class="w-full" />
     </header>
