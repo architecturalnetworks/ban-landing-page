@@ -1,9 +1,28 @@
+/* LAYOUT  */
+
 div#__nuxt {
   @apply h-screen;
 }
 div#__layout {
   @apply h-full;
 }
+
+.sandwich-grid {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+}
+
+.full-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/* LINKS  */
 
 a.red {
   @apply text-red-600;
@@ -19,6 +38,8 @@ a:active,
   @apply text-red-600 underline;
 }
 
+/* BUTTONS  */
+
 .btn-link {
   @apply no-underline;
 }
@@ -26,20 +47,6 @@ a:active,
 .btn-link:hover,
 .btn-link.active {
   @apply text-white underline;
-}
-
-.full-width {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-}
-
-.layout-grid {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
 }
 
 /* PAGE TRANSITIONS ON ALL ROUTES  */
