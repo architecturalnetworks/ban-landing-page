@@ -12,14 +12,8 @@
         Events<span class="font-normal text-red-600 font-logo"> next</span>
       </h1>
       <div class="h-6" />
-      <template
-        v-if="state.matches('fetched') && state.context.futureEvents.length > 0"
-      >
-        <event-list-future :events="state.context.futureEvents" />
-      </template>
-      <template v-else>
-        <spinner />
-      </template>
+
+      <event-list-future />
 
       <div class="h-12" />
     </section>

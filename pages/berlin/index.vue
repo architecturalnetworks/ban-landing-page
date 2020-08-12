@@ -48,12 +48,7 @@
           </p>
         </div>
         <div class="h-4" />
-        <template v-if="state.value === 'fetched'">
-          <event-list-future :events="state.context.futureEvents" />
-        </template>
-        <template v-else>
-          <spinner />
-        </template>
+        <event-list-future />
       </div>
       <div class="h-8" />
     </section>
@@ -80,9 +75,7 @@ import {
   ref,
   useFetch,
   useContext,
-  computed,
 } from 'nuxt-composition-api'
-import { eventMachineVue } from '~/fsm/eventMachine'
 
 export default defineComponent({
   setup() {
@@ -93,18 +86,10 @@ export default defineComponent({
       homeCopy.value = await $content('homeCopy').fetch()
       about.value = await $content('homeAbout').fetch()
     })
-    const state = computed(() => {
-      return eventMachineVue.current
-    })
-    const context = computed(() => {
-      return eventMachineVue.context
-    })
-    eventMachineVue.send({ type: 'FETCH_FUTURE' })
+
     return {
       homeCopy,
       about,
-      state,
-      context,
     }
   },
 })

@@ -1,64 +1,81 @@
 <template>
   <div>
-    <div class="home-event-grid">
-      <event-list-item-next :event="events[0]" />
+    <template v-if="state.value === 'fetched'">
+      <div class="home-event-grid">
+        <event-list-item-next :event="events[0]" />
 
-      <div v-if="events.length > 1">
-        <!-- SMALLER SCREENS, SHOW BIG CARDS -->
-        <ul id="list-screen-small" class="space-y-4 md:hidden">
-          <li v-for="event in events.slice(1)" :key="event.slug">
-            <event-list-item-next :event="event" />
-          </li>
-        </ul>
-        <!-- LARGE SCREENS, MAKE IT A REGULAR LIST -->
-        <div class="hidden md:block">
-          <ul class="h-full event-grid">
+        <div v-if="events.length > 1">
+          <!-- SMALLER SCREENS, SHOW BIG CARDS -->
+          <ul id="list-screen-small" class="space-y-4 md:hidden">
             <li v-for="event in events.slice(1)" :key="event.slug">
-              <event-list-item :event="event" />
-            </li>
-            <li
-              v-if="events.slice(1).length < 2"
-              class="flex-col items-center justify-center hidden p-4 bg-white border-2 border-dashed md:flex"
-            >
-              <span class="text-6xl text-gray-400 font-logo">&plus;</span>
-              Any ideas for an event?<br />
-              <a href="mailto:berlin@architecturalnetworks.com">Let us know!</a>
+              <event-list-item-next :event="event" />
             </li>
           </ul>
-          <!-- <event-list :events="events.slice(1)" /> -->
+          <!-- LARGE SCREENS, MAKE IT A REGULAR LIST -->
+          <div class="hidden md:block">
+            <ul class="h-full event-grid">
+              <li v-for="event in events.slice(1)" :key="event.slug">
+                <event-list-item :event="event" />
+              </li>
+              <li
+                v-if="events.slice(1).length < 2"
+                class="flex-col items-center justify-center hidden p-4 bg-white border-2 border-dashed md:flex"
+              >
+                <span class="text-6xl text-gray-400 font-logo">&plus;</span>
+                Any ideas for an event?<br />
+                <a href="mailto:berlin@architecturalnetworks.com"
+                  >Let us know!</a
+                >
+              </li>
+            </ul>
+            <!-- <event-list :events="events.slice(1)" /> -->
+          </div>
+        </div>
+
+        <div class="md:hidden">
+          <div class="h-8" />
+          <p class="text-center">
+            Any ideas for an event?
+            <a href="mailto:berlin@architecturalnetworks.com">Let us know!</a>
+          </p>
         </div>
       </div>
-
-      <div class="md:hidden">
+      <div
+        v-if="events.length % 3 === 0 || events.length === 1"
+        class="hidden md:block"
+      >
         <div class="h-8" />
         <p class="text-center">
           Any ideas for an event?
           <a href="mailto:berlin@architecturalnetworks.com">Let us know!</a>
         </p>
       </div>
-    </div>
-    <div
-      v-if="events.length % 3 === 0 || events.length === 1"
-      class="hidden md:block"
-    >
-      <div class="h-8" />
-      <p class="text-center">
-        Any ideas for an event?
-        <a href="mailto:berlin@architecturalnetworks.com">Let us know!</a>
-      </p>
-    </div>
+    </template>
+    <template v-else>
+      <spinner />
+    </template>
   </div>
 </template>
 
 <script>
-export default {
-  props: {
-    events: {
-      type: Array,
-      required: true,
-    },
+import { defineComponent, computed } from 'nuxt-composition-api'
+import { eventMachineVue } from '~/fsm/eventMachine'
+
+export default defineComponent({
+  setup() {
+    const state = computed(() => {
+      return eventMachineVue.current
+    })
+    const events = computed(() => {
+      return eventMachineVue.context.futureEvents
+    })
+    eventMachineVue.send({ type: 'FETCH_FUTURE' })
+    return {
+      state,
+      events,
+    }
   },
-}
+})
 </script>
 
 <style scoped>

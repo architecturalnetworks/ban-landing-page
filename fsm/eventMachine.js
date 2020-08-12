@@ -16,7 +16,11 @@ const machine = Machine(
     },
     initial: 'idle',
     states: {
-      idle: {},
+      idle: {
+        on: {
+          FETCH_FUTURE: 'fetchingFuture',
+        },
+      },
       fetchingFuture: {
         invoke: {
           id: 'invoke-fetch-future',
@@ -64,7 +68,6 @@ const machine = Machine(
     },
     on: {
       FETCH_ALL: 'fetchingAll',
-      FETCH_FUTURE: 'fetchingFuture',
       FETCH_ONE: 'fetchingOne',
     },
   },
