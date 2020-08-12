@@ -72,6 +72,7 @@ export const jobFragment = gql`
     subtitle
     url
     site
+    image_url
   }
 `
 
