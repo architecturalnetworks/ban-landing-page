@@ -33,6 +33,24 @@
       </section>
       <div class="h-12 sm:h-16" />
     </div>
+    <!-- JOBS -->
+    <section class="px-4 pb-8 sm:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex items-center justify-between">
+          <h2 class="font-bold">
+            <nuxt-link to="/berlin/events" class="no-underline">Jobs</nuxt-link>
+            <span class="font-normal text-red-600 font-logo">latest</span>
+          </h2>
+          <p class="text-red-600 font-logo">
+            <!-- <nuxt-link to="/berlin/events" class="no-underline">[·]</nuxt-link> -->
+            [x]
+          </p>
+        </div>
+        <div class="h-4" />
+        <job-list />
+      </div>
+      <div class="h-8" />
+    </section>
     <!-- EVENTS -->
     <section class="px-4 pb-8 sm:px-8">
       <div class="max-w-4xl mx-auto">
