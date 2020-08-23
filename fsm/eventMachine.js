@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { Machine, assign } from 'xstate'
 import { endOfYesterday, format } from 'date-fns'
-import { client } from '@/plugins/apollo'
+import { storyblokClient } from '@/plugins/apollo'
 import { generateVueMachine } from './generateVueMachine'
 
 const machine = Machine(
@@ -122,7 +122,7 @@ async function invokeFetchOne(_, event) {
   const {
     params: { id },
   } = event
-  const { data } = await client.query({
+  const { data } = await storyblokClient.query({
     query: gql`
       query event($id: ID!) {
         EventItem(id: $id) {
@@ -152,7 +152,7 @@ async function invokeFetchOne(_, event) {
 async function invokeFetchFuture() {
   // 2019-12-24 09:00
   const yesterday = format(endOfYesterday(), 'yyyy-MM-dd HH:mm')
-  const { data } = await client.query({
+  const { data } = await storyblokClient.query({
     query: gql`
       query futureEvents {
         futureEvents:EventItems(sort_by: "content.date:asc", filter_query: { date: { gt_date: "${yesterday}" } }) {
@@ -168,7 +168,7 @@ async function invokeFetchFuture() {
 }
 async function invokeFetchAll() {
   const yesterday = format(endOfYesterday(), 'yyyy-MM-dd HH:mm')
-  const { data } = await client.query({
+  const { data } = await storyblokClient.query({
     query: gql`
       query allEvents {
         futureEvents:EventItems(sort_by: "content.date:asc", filter_query: { date: { gt_date: "${yesterday}" } }) {

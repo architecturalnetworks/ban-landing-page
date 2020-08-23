@@ -8,9 +8,14 @@
       <div class="font-logo">
         <p>&nbsp;</p>
         <p>&nbsp;</p>
-        <p class="font-sans font-bold">
-          <nuxt-link to="/berlin/events">Events</nuxt-link>
-        </p>
+        <ul class="flex space-x-4 font-sans font-bold">
+          <li>
+            <nuxt-link to="/berlin/jobs">Jobs</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/berlin/events">Events</nuxt-link>
+          </li>
+        </ul>
 
         <p>&nbsp;</p>
       </div>

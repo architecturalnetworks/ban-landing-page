@@ -2,14 +2,17 @@
   <footer class="p-6 text-white bg-black">
     <ul class="flex items-center justify-center space-x-6">
       <li>
-        <nuxt-link to="Home">Home</nuxt-link>
+        <nuxt-link to="/berlin">Home</nuxt-link>
       </li>
       <li>
-        <nuxt-link to="Home">Events</nuxt-link>
+        <nuxt-link to="/berlin/jobs">Jobs</nuxt-link>
       </li>
       <li>
-        <nuxt-link to="Home">About</nuxt-link>
+        <nuxt-link to="/berlin/events">Events</nuxt-link>
       </li>
+      <!-- <li>
+        <nuxt-link to="/berlin/about">About</nuxt-link>
+      </li> -->
     </ul>
     <div class="h-6"></div>
     <ul class="flex items-center justify-center space-x-6">

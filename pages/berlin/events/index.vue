@@ -13,7 +13,7 @@
       </h1>
       <div class="h-6" />
 
-      <event-list-future />
+      <event-list-future :events="futureEvents" />
 
       <div class="h-12" />
     </section>
@@ -26,11 +26,9 @@
         </h2>
         <div class="h-6" />
 
-        <template
-          v-if="state.matches('fetched') && state.context.pastEvents.length > 0"
-        >
+        <template v-if="pastEvents">
           <ul class="h-full past-events-grid">
-            <li v-for="event in state.context.pastEvents" :key="event.id">
+            <li v-for="event in pastEvents" :key="event.id">
               <event-list-item :event="event" />
             </li>
           </ul>
@@ -46,21 +44,58 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'nuxt-composition-api'
-import { eventMachineVue } from '~/fsm/eventMachine'
+import {
+  defineComponent,
+  useMeta,
+  useAsync,
+  useContext,
+} from '@nuxtjs/composition-api'
+import { endOfYesterday, format } from 'date-fns'
+import { createSEOMeta } from '~/utils/seo'
+const YESTERDAY = format(endOfYesterday(), 'yyyy-MM-dd HH:mm')
+
 export default defineComponent({
   layout: 'pages',
+  head: {},
   setup() {
-    const state = computed(() => {
-      return eventMachineVue.current
+    useMeta({
+      title: 'Events ·ban - Berlin Architectural Network',
+      meta: createSEOMeta({
+        description: 'Future and past events for architects in Berlin.',
+      }),
     })
-    const context = computed(() => {
-      return eventMachineVue.context
+    const {
+      app: { $storyapi },
+    } = useContext()
+
+    const futureEvents = useAsync(async () => {
+      const res = await $storyapi.get('cdn/stories', {
+        starts_with: 'events/',
+        filter_query: {
+          date: {
+            gt_date: YESTERDAY,
+          },
+        },
+        sort_by: 'content.date:asc',
+      })
+      return res.total ? res.data.stories : []
     })
-    eventMachineVue.send({ type: 'FETCH_ALL' })
+    const pastEvents = useAsync(async () => {
+      const res = await $storyapi.get('cdn/stories', {
+        starts_with: 'events/',
+        filter_query: {
+          date: {
+            lt_date: YESTERDAY,
+          },
+        },
+        sort_by: 'content.date:desc',
+      })
+      return res.total ? res.data.stories : []
+    })
+
     return {
-      state,
-      context,
+      futureEvents,
+      pastEvents,
     }
   },
 })

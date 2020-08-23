@@ -9,7 +9,10 @@
       </header>
 
       <div class="h-12 md:h-20" />
-      <section class="text-lg leading-tight text-center md:text-xl">
+      <section
+        class="text-lg leading-tight text-center md:text-xl"
+        v-if="homeCopy"
+      >
         <h1 class="font-bold">
           <span class="text-red-600 font-logo">&middot;ban</span>
           {{ homeCopy.title }}
@@ -21,8 +24,8 @@
         </div>
       </section>
 
-      <div class="h-12 sm:h-16" />
-      <section>
+      <div class="h-16 sm:h-24" />
+      <!-- <section>
         <div class="max-w-xl mx-auto">
           <p class="text-center text-red-600 font-logo">&middot;</p>
           <p>&nbsp;</p>
@@ -31,8 +34,25 @@
           <p class="text-center text-red-600 font-logo">&middot;</p>
         </div>
       </section>
-      <div class="h-12 sm:h-16" />
+      <div class="h-12 sm:h-16" /> -->
     </div>
+    <!-- JOBS -->
+    <section class="px-4 pb-8 sm:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex items-center justify-between">
+          <h2 class="font-bold">
+            <nuxt-link to="/berlin/jobs" class="no-underline">Jobs</nuxt-link>
+            <span class="font-normal text-red-600 font-logo">latest</span>
+          </h2>
+          <p class="text-red-600 font-logo">
+            <nuxt-link to="/berlin/jobs" class="no-underline">[×]</nuxt-link>
+          </p>
+        </div>
+        <div class="h-4" />
+        <job-list :jobs="jobs" />
+      </div>
+      <div class="h-8" />
+    </section>
     <!-- EVENTS -->
     <section class="px-4 pb-8 sm:px-8">
       <div class="max-w-4xl mx-auto">
@@ -48,48 +68,55 @@
           </p>
         </div>
         <div class="h-4" />
-        <event-list-future />
+        <event-list-future :events="events" />
       </div>
       <div class="h-8" />
     </section>
     <!-- ABOUT  -->
     <section class="px-4 py-8 text-white bg-black sm:p-8">
       <div class="max-w-xl mx-auto">
-        <!-- <div class="w-12 mb-1 border-t-2 border-white" /> -->
         <h2 class="font-bold">
           About
           <span class="font-normal text-red-600 font-logo">&middot;ban</span>
         </h2>
         <div class="h-4" />
-        <div>
-          <nuxt-content :document="about" />
-        </div>
+        <nuxt-content :document="about" />
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import {
-  defineComponent,
-  ref,
-  useFetch,
-  useContext,
-} from 'nuxt-composition-api'
-
+import { defineComponent, useAsync, useContext } from '@nuxtjs/composition-api'
+import { endOfYesterday, format } from 'date-fns'
+import { invokeFetchLatest } from '~/use/fetchJobs'
+const YESTERDAY = format(endOfYesterday(), 'yyyy-MM-dd HH:mm')
 export default defineComponent({
   setup() {
-    const { $content } = useContext()
-    const homeCopy = ref({})
-    const about = ref({})
-    useFetch(async () => {
-      homeCopy.value = await $content('homeCopy').fetch()
-      about.value = await $content('homeAbout').fetch()
+    const {
+      $content,
+      app: { $storyapi },
+    } = useContext()
+    const homeCopy = useAsync(async () => await $content('homeCopy').fetch())
+    const about = useAsync(async () => await $content('homeAbout').fetch())
+    const events = useAsync(async () => {
+      const res = await $storyapi.get('cdn/stories', {
+        starts_with: 'events/',
+        filter_query: {
+          date: {
+            gt_date: YESTERDAY,
+          },
+        },
+        sort_by: 'content.date:asc',
+      })
+      return res.total ? res.data.stories : []
     })
-
+    const jobs = useAsync(async () => await invokeFetchLatest())
     return {
       homeCopy,
       about,
+      events,
+      jobs,
     }
   },
 })

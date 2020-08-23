@@ -18,6 +18,7 @@ export default {
   },
   computed: {
     parsedDate() {
+      // deepcode ignore GlobalReplacementRegex: there is only one T in the string, always
       return this.date.includes('T') ? this.date : this.date.replace(' ', 'T')
     },
     dateFormat() {

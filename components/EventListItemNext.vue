@@ -4,12 +4,6 @@
       <nuxt-link :to="`/berlin/events/${event.slug}`" class="no-underline"
         ><img :src="imageURL" class="object-cover w-full h-full"
       /></nuxt-link>
-      <!-- <a
-        :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${event.meetupId}/`"
-        target="blank"
-        class="no-underline"
-        ><img :src="imageURL" class="object-cover w-full h-full"
-      /></a> -->
     </figure>
 
     <div id="type-date" class="flex justify-between px-4 py-4 md:pl-0">
@@ -18,11 +12,6 @@
     </div>
     <div id="title" class="px-4 pb-4 md:pl-0">
       <h3 class="font-bold">
-        <!-- <a
-          :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${content.meetupId}/`"
-          target="blank"
-          >{{ content.title }}</a
-        > -->
         <nuxt-link :to="`/berlin/events/${event.slug}`" class="no-underline">{{
           content.title
         }}</nuxt-link>
@@ -42,7 +31,7 @@
 </template>
 
 <script>
-import { defineComponent } from 'nuxt-composition-api'
+import { defineComponent } from '@nuxtjs/composition-api'
 import useCloudinaryURL from '@/use/cloudinaryURL'
 
 export default defineComponent({
