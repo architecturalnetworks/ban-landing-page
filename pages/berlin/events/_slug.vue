@@ -151,14 +151,17 @@ import {
   defineComponent,
   computed,
   useContext,
+  useMeta,
   ref,
   watch,
 } from 'nuxt-composition-api'
 import { isFuture } from 'date-fns'
 import { eventMachineVue } from '~/fsm/eventMachine.js'
+import { createSEOMeta } from '~/utils/seo'
 import useCloudinaryURL from '~/use/cloudinaryURL'
 export default defineComponent({
   layout: 'pages',
+  head: {},
   setup() {
     const { route } = useContext()
     const state = computed(() => {
@@ -171,6 +174,7 @@ export default defineComponent({
     const eventIsFuture = ref('')
     const nextEventSlug = ref('')
     const previousEventSlug = ref('')
+
     watch(context, (context, _) => {
       if (context.event) {
         imageURL.value = useCloudinaryURL(
@@ -190,6 +194,13 @@ export default defineComponent({
           currentEventIndex,
           context.paginationEvents
         )
+        useMeta({
+          title: context.event.title,
+          meta: createSEOMeta({
+            description: context.event.summary,
+            image: imageURL,
+          }),
+        })
       }
     })
 

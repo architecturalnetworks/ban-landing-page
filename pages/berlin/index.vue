@@ -21,8 +21,8 @@
         </div>
       </section>
 
-      <div class="h-12 sm:h-16" />
-      <section>
+      <div class="h-16 sm:h-24" />
+      <!-- <section>
         <div class="max-w-xl mx-auto">
           <p class="text-center text-red-600 font-logo">&middot;</p>
           <p>&nbsp;</p>
@@ -31,7 +31,7 @@
           <p class="text-center text-red-600 font-logo">&middot;</p>
         </div>
       </section>
-      <div class="h-12 sm:h-16" />
+      <div class="h-12 sm:h-16" /> -->
     </div>
     <!-- JOBS -->
     <section class="px-4 pb-8 sm:px-8">
@@ -66,22 +66,19 @@
           </p>
         </div>
         <div class="h-4" />
-        <event-list-future />
+        <event-list-future :events="events" :fetch-state="eventsFetchState" />
       </div>
       <div class="h-8" />
     </section>
     <!-- ABOUT  -->
     <section class="px-4 py-8 text-white bg-black sm:p-8">
       <div class="max-w-xl mx-auto">
-        <!-- <div class="w-12 mb-1 border-t-2 border-white" /> -->
         <h2 class="font-bold">
           About
           <span class="font-normal text-red-600 font-logo">&middot;ban</span>
         </h2>
         <div class="h-4" />
-        <div>
-          <nuxt-content :document="about" />
-        </div>
+        <nuxt-content :document="about" />
       </div>
     </section>
   </div>
@@ -94,20 +91,40 @@ import {
   useFetch,
   useContext,
 } from 'nuxt-composition-api'
-
+import { endOfYesterday, format } from 'date-fns'
+const YESTERDAY = format(endOfYesterday(), 'yyyy-MM-dd HH:mm')
 export default defineComponent({
   setup() {
-    const { $content } = useContext()
+    const {
+      $content,
+      app: { $storyapi },
+    } = useContext()
     const homeCopy = ref({})
     const about = ref({})
+    const events = ref()
     useFetch(async () => {
       homeCopy.value = await $content('homeCopy').fetch()
       about.value = await $content('homeAbout').fetch()
     })
-
+    const { fetchState: eventsFetchState } = useFetch(async () => {
+      const eventsRaw = await $storyapi.get('cdn/stories', {
+        starts_with: 'events/',
+        filter_query: {
+          date: {
+            gt_date: YESTERDAY,
+          },
+        },
+        sort_by: 'content.date:asc',
+      })
+      if (eventsRaw.total) {
+        events.value = eventsRaw.data.stories
+      }
+    })
     return {
+      eventsFetchState,
       homeCopy,
       about,
+      events,
     }
   },
 })

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <template v-if="state.value === 'fetched'">
+    <template v-if="!fetchState.pending">
       <div class="home-event-grid">
         <event-list-item-next :event="events[0]" />
 
@@ -28,7 +28,6 @@
                 >
               </li>
             </ul>
-            <!-- <event-list :events="events.slice(1)" /> -->
           </div>
         </div>
 
@@ -58,21 +57,25 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'nuxt-composition-api'
-import { eventMachineVue } from '~/fsm/eventMachine'
+import { defineComponent } from 'nuxt-composition-api'
 
 export default defineComponent({
-  setup() {
-    const state = computed(() => {
-      return eventMachineVue.current
-    })
-    const events = computed(() => {
-      return eventMachineVue.context.futureEvents
-    })
-    eventMachineVue.send({ type: 'FETCH_FUTURE' })
+  props: {
+    events: {
+      type: Array,
+      default: () => [],
+    },
+    fetchState: {
+      type: Object,
+      required: true,
+    },
+  },
+  setup(props) {
+    const { events, fetchState } = props
+
     return {
-      state,
       events,
+      fetchState,
     }
   },
 })

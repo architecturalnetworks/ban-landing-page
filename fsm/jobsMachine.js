@@ -95,7 +95,7 @@ async function invokeFetchLatest() {
       query allJobs {
         job(
           order_by: { date: desc }
-          limit: 10
+          limit: 5
           where: { status: { _neq: "disabled" } }
         ) {
           ...jobItem
