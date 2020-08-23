@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { defineComponent } from 'nuxt-composition-api'
+import { defineComponent } from '@nuxtjs/composition-api'
 import useCloudinaryURL from '@/use/cloudinaryURL'
 
 export default defineComponent({

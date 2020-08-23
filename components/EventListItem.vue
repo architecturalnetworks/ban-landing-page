@@ -51,7 +51,7 @@
 
 <script>
 import VClamp from 'vue-clamp'
-import { defineComponent } from 'nuxt-composition-api'
+import { defineComponent } from '@nuxtjs/composition-api'
 import { isPast } from 'date-fns'
 import useCloudinaryURL from '@/use/cloudinaryURL'
 

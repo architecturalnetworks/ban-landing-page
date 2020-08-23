@@ -26,7 +26,7 @@ import {
   // useContext,
   // ref,
   // watch,
-} from 'nuxt-composition-api'
+} from '@nuxtjs/composition-api'
 import IconLink from '@/components/icons/IconLink'
 import IconFilm from '@/components/icons/IconFilm'
 import IconFile from '@/components/icons/IconFile'

@@ -80,7 +80,7 @@ export default async () => {
           id: 'UA-171122557-1',
         },
       ],
-      'nuxt-composition-api',
+      '@nuxtjs/composition-api',
     ],
     /*
      ** Nuxt.js modules

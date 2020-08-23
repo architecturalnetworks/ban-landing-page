@@ -13,10 +13,7 @@
       </h1>
       <div class="h-6" />
 
-      <event-list-future
-        :events="futureEvents"
-        :fetch-state="futureFetchState"
-      />
+      <event-list-future :events="futureEvents" />
 
       <div class="h-12" />
     </section>
@@ -29,18 +26,16 @@
         </h2>
         <div class="h-6" />
 
-        <!-- <template
-          v-if="state.matches('fetched') && state.context.pastEvents.length > 0"
-        >
+        <template v-if="pastEvents">
           <ul class="h-full past-events-grid">
-            <li v-for="event in state.context.pastEvents" :key="event.id">
+            <li v-for="event in pastEvents" :key="event.id">
               <event-list-item :event="event" />
             </li>
           </ul>
         </template>
         <template v-else>
           <spinner />
-        </template> -->
+        </template>
 
         <div class="h-10" />
       </div>
@@ -51,16 +46,14 @@
 <script>
 import {
   defineComponent,
-  // computed,
   useMeta,
-  useFetch,
+  useAsync,
   useContext,
-  ref,
-} from 'nuxt-composition-api'
-// import { eventMachineVue } from '~/fsm/eventMachine'
+} from '@nuxtjs/composition-api'
 import { endOfYesterday, format } from 'date-fns'
 import { createSEOMeta } from '~/utils/seo'
 const YESTERDAY = format(endOfYesterday(), 'yyyy-MM-dd HH:mm')
+
 export default defineComponent({
   layout: 'pages',
   head: {},
@@ -74,10 +67,9 @@ export default defineComponent({
     const {
       app: { $storyapi },
     } = useContext()
-    const futureEvents = ref()
-    const pastEvents = ref()
-    const { fetchState: futureFetchState } = useFetch(async () => {
-      const events = await $storyapi.get('cdn/stories', {
+
+    const futureEvents = useAsync(async () => {
+      const res = await $storyapi.get('cdn/stories', {
         starts_with: 'events/',
         filter_query: {
           date: {
@@ -86,38 +78,24 @@ export default defineComponent({
         },
         sort_by: 'content.date:asc',
       })
-      if (events.total) {
-        futureEvents.value = events.data.stories
-      }
+      return res.total ? res.data.stories : []
     })
-    const { fetchState: pastFetchState } = useFetch(async () => {
-      const events = await $storyapi.get('cdn/stories', {
+    const pastEvents = useAsync(async () => {
+      const res = await $storyapi.get('cdn/stories', {
         starts_with: 'events/',
         filter_query: {
           date: {
             lt_date: YESTERDAY,
           },
         },
-        sort_by: 'content.date:asc',
+        sort_by: 'content.date:desc',
       })
-      if (events.total) {
-        pastEvents.value = events.data.stories
-      }
+      return res.total ? res.data.stories : []
     })
-    // const state = computed(() => {
-    //   return eventMachineVue.current
-    // })
-    // const context = computed(() => {
-    //   return eventMachineVue.context
-    // })
-    // eventMachineVue.send({ type: 'FETCH_ALL' })
+
     return {
-      // state,
-      // context,
       futureEvents,
-      futureFetchState,
       pastEvents,
-      pastFetchState,
     }
   },
 })

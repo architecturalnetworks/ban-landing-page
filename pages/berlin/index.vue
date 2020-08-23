@@ -8,7 +8,7 @@
         <home-hero />
       </header>
 
-      <div class="h-12 md:h-20" />
+      <div class="h-12 md:h-20" v-if="homeCopy" />
       <section class="text-lg leading-tight text-center md:text-xl">
         <h1 class="font-bold">
           <span class="text-red-600 font-logo">&middot;ban</span>
@@ -66,7 +66,7 @@
           </p>
         </div>
         <div class="h-4" />
-        <event-list-future :events="events" :fetch-state="eventsFetchState" />
+        <event-list-future :events="events" />
       </div>
       <div class="h-8" />
     </section>
@@ -85,12 +85,7 @@
 </template>
 
 <script>
-import {
-  defineComponent,
-  ref,
-  useFetch,
-  useContext,
-} from 'nuxt-composition-api'
+import { defineComponent, useAsync, useContext } from '@nuxtjs/composition-api'
 import { endOfYesterday, format } from 'date-fns'
 const YESTERDAY = format(endOfYesterday(), 'yyyy-MM-dd HH:mm')
 export default defineComponent({
@@ -99,15 +94,10 @@ export default defineComponent({
       $content,
       app: { $storyapi },
     } = useContext()
-    const homeCopy = ref({})
-    const about = ref({})
-    const events = ref()
-    useFetch(async () => {
-      homeCopy.value = await $content('homeCopy').fetch()
-      about.value = await $content('homeAbout').fetch()
-    })
-    const { fetchState: eventsFetchState } = useFetch(async () => {
-      const eventsRaw = await $storyapi.get('cdn/stories', {
+    const homeCopy = useAsync(async () => await $content('homeCopy').fetch())
+    const about = useAsync(async () => await $content('homeAbout').fetch())
+    const events = useAsync(async () => {
+      const res = await $storyapi.get('cdn/stories', {
         starts_with: 'events/',
         filter_query: {
           date: {
@@ -116,12 +106,9 @@ export default defineComponent({
         },
         sort_by: 'content.date:asc',
       })
-      if (eventsRaw.total) {
-        events.value = eventsRaw.data.stories
-      }
+      return res.total ? res.data.stories : []
     })
     return {
-      eventsFetchState,
       homeCopy,
       about,
       events,

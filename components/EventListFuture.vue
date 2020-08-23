@@ -1,6 +1,6 @@
 <template>
   <div>
-    <template v-if="!fetchState.pending">
+    <template v-if="events">
       <div class="home-event-grid">
         <event-list-item-next :event="events[0]" />
 
@@ -57,28 +57,14 @@
 </template>
 
 <script>
-import { defineComponent } from 'nuxt-composition-api'
-
-export default defineComponent({
+export default {
   props: {
     events: {
       type: Array,
-      default: () => [],
-    },
-    fetchState: {
-      type: Object,
-      required: true,
+      default: null,
     },
   },
-  setup(props) {
-    const { events, fetchState } = props
-
-    return {
-      events,
-      fetchState,
-    }
-  },
-})
+}
 </script>
 
 <style scoped>
