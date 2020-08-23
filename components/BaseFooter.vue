@@ -5,6 +5,9 @@
         <nuxt-link to="/berlin">Home</nuxt-link>
       </li>
       <li>
+        <nuxt-link to="/berlin/jobs">Jobs</nuxt-link>
+      </li>
+      <li>
         <nuxt-link to="/berlin/events">Events</nuxt-link>
       </li>
       <!-- <li>

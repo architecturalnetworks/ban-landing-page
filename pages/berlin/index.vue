@@ -8,8 +8,11 @@
         <home-hero />
       </header>
 
-      <div class="h-12 md:h-20" v-if="homeCopy" />
-      <section class="text-lg leading-tight text-center md:text-xl">
+      <div class="h-12 md:h-20" />
+      <section
+        class="text-lg leading-tight text-center md:text-xl"
+        v-if="homeCopy"
+      >
         <h1 class="font-bold">
           <span class="text-red-600 font-logo">&middot;ban</span>
           {{ homeCopy.title }}
@@ -38,16 +41,15 @@
       <div class="max-w-4xl mx-auto">
         <div class="flex items-center justify-between">
           <h2 class="font-bold">
-            <nuxt-link to="/berlin/events" class="no-underline">Jobs</nuxt-link>
+            <nuxt-link to="/berlin/jobs" class="no-underline">Jobs</nuxt-link>
             <span class="font-normal text-red-600 font-logo">latest</span>
           </h2>
           <p class="text-red-600 font-logo">
-            <!-- <nuxt-link to="/berlin/events" class="no-underline">[·]</nuxt-link> -->
-            [x]
+            <nuxt-link to="/berlin/jobs" class="no-underline">[×]</nuxt-link>
           </p>
         </div>
         <div class="h-4" />
-        <job-list />
+        <job-list :jobs="jobs" />
       </div>
       <div class="h-8" />
     </section>
@@ -87,6 +89,7 @@
 <script>
 import { defineComponent, useAsync, useContext } from '@nuxtjs/composition-api'
 import { endOfYesterday, format } from 'date-fns'
+import { invokeFetchLatest } from '~/use/fetchJobs'
 const YESTERDAY = format(endOfYesterday(), 'yyyy-MM-dd HH:mm')
 export default defineComponent({
   setup() {
@@ -108,10 +111,12 @@ export default defineComponent({
       })
       return res.total ? res.data.stories : []
     })
+    const jobs = useAsync(async () => await invokeFetchLatest())
     return {
       homeCopy,
       about,
       events,
+      jobs,
     }
   },
 })
