@@ -8,12 +8,27 @@
     </nav>
     <!-- ONE WEEK JOBS  -->
     <section>
-      <h1 class="font-bold">
-        Jobs<span class="font-normal text-red-600 font-logo"> last week</span>
-      </h1>
+      <div>
+        <h1 class="font-bold">
+          Jobs<span class="font-normal text-red-600 font-logo"> this week</span>
+        </h1>
+        <!-- <div>
+          Filter:
+          <input
+            type="text"
+            class="p-2 text-black bg-white border border-black shadow-inner"
+            placeholder="Start typing..."
+            v-model="filter"
+          />
+        </div> -->
+      </div>
       <div class="h-6" />
-
-      <job-list :jobs="lastWeek" />
+      <template v-if="fetchState.pending">
+        <spinner />
+      </template>
+      <template v-else>
+        <job-list :jobs="lastWeek" />
+      </template>
 
       <div class="h-12" />
     </section>
@@ -26,8 +41,12 @@
           Jobs<span class="font-normal text-red-600 font-logo"> older</span>
         </h2>
         <div class="h-6" />
-        <job-list :jobs="lastMonth" />
-
+        <template v-if="fetchState.pending">
+          <spinner />
+        </template>
+        <template v-else>
+          <job-list :jobs="lastMonth" />
+        </template>
         <div class="h-10" />
       </div>
     </section>
@@ -38,8 +57,10 @@
 import {
   defineComponent,
   useMeta,
-  useAsync,
+  // useAsync,
+  // computed,
   ref,
+  useFetch,
 } from '@nuxtjs/composition-api'
 import { createSEOMeta } from '~/utils/seo'
 import { invokeFetchAll } from '~/use/fetchJobs'
@@ -54,19 +75,30 @@ export default defineComponent({
         description: 'Architecture jobs in Berlin.',
       }),
     })
+    const filter = ref('')
 
     const lastWeek = ref([])
     const lastMonth = ref([])
-    const allJobs = useAsync(async () => {
+    const { fetchState } = useFetch(async () => {
       const res = await invokeFetchAll()
       lastWeek.value = res.lastWeek
       lastMonth.value = res.lastMonth
     })
 
+    // const lastWeekJobs = computed(() => {
+    //   if (filter) {
+    //     return lastWeek.value.filter((job) =>
+    //       job.title.toLowerCase().includes(filter.value.toLowerCase())
+    //     )
+    //   }
+    //   return lastWeek
+    // })
+
     return {
       lastWeek,
       lastMonth,
-      allJobs,
+      filter,
+      fetchState,
     }
   },
 })
