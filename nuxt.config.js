@@ -13,6 +13,9 @@ export default async () => {
      ** Headers of the page
      */
     head: {
+      htmlAttrs: {
+        lang: 'en',
+      },
       title: '·ban | Berlin Architectural Network' || '',
       meta: [
         { charset: 'utf-8' },

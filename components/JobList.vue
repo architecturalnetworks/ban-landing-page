@@ -7,18 +7,22 @@
             <img
               v-if="job.image_url"
               :src="job.image_url"
-              :onerror="`this.onerror=null; this.src='${defaultLogo}'`"
+              :alt="`${job.company}'s logo`"
+              :onerror="`this.onerror=null; this.src='${defaultLogo}'; this.alt='ban jobs default logo'`"
               class="object-cover object-top w-full h-12 overflow-hidden rounded shadow"
             />
             <img
               v-else
               :src="defaultLogo"
+              alt="ban jobs default logo"
               class="w-12 h-12 overflow-hidden rounded shadow"
             />
           </div>
           <div>
             <strong
-              ><a :href="job.url" target="_blank">{{ job.title }}</a></strong
+              ><a :href="job.url" target="_blank" rel="noopener noreferrer">{{
+                job.title
+              }}</a></strong
             ><br />
             @ {{ job.company }}
             <p class="text-sm">
@@ -28,7 +32,7 @@
                 })
               }}
               on
-              <a :href="job.url" target="_blank"
+              <a :href="job.url" target="_blank" rel="noopener noreferrer"
                 >{{ uppercaseFirst(job.site) }} →</a
               >
             </p>
