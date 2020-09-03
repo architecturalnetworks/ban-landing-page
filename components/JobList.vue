@@ -18,7 +18,9 @@
           </div>
           <div>
             <strong
-              ><a :href="job.url" target="_blank">{{ job.title }}</a></strong
+              ><a :href="job.url" target="_blank" rel="noopener noreferrer">{{
+                job.title
+              }}</a></strong
             ><br />
             @ {{ job.company }}
             <p class="text-sm">
@@ -28,7 +30,7 @@
                 })
               }}
               on
-              <a :href="job.url" target="_blank"
+              <a :href="job.url" target="_blank" rel="noopener noreferrer"
                 >{{ uppercaseFirst(job.site) }} →</a
               >
             </p>
