@@ -27,6 +27,7 @@
       <form @submit.prevent="submit">
         <div class="w-full sm:flex">
           <p class="sm:w-1/2">
+            <label for="email" class="hidden">Email address</label>
             <input
               id="email"
               v-model="email"
