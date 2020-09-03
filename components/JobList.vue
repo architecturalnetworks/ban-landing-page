@@ -7,12 +7,14 @@
             <img
               v-if="job.image_url"
               :src="job.image_url"
-              :onerror="`this.onerror=null; this.src='${defaultLogo}'`"
+              :alt="`${job.company}'s logo`"
+              :onerror="`this.onerror=null; this.src='${defaultLogo}'; this.alt='ban jobs default logo'`"
               class="object-cover object-top w-full h-12 overflow-hidden rounded shadow"
             />
             <img
               v-else
               :src="defaultLogo"
+              alt="ban jobs default logo"
               class="w-12 h-12 overflow-hidden rounded shadow"
             />
           </div>

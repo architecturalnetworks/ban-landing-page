@@ -5,7 +5,10 @@
   >
     <figure id="image" class="overflow-hidden">
       <nuxt-link :to="`/berlin/events/${event.slug}`" class="no-underline"
-        ><img :src="imageURL" class="object-cover w-full h-full"
+        ><img
+          :src="imageURL"
+          class="object-cover w-full h-full"
+          alt="Event's cover image"
       /></nuxt-link>
     </figure>
     <main class="p-4">
@@ -16,11 +19,6 @@
 
       <div id="title">
         <h3 class="font-bold">
-          <!-- <a
-          :href="`https://www.meetup.com/BAN-Berlin-Architectural-Network/events/${content.meetupId}/`"
-          target="blank"
-          >{{ content.title }}</a
-        > -->
           <nuxt-link
             :to="`/berlin/events/${event.slug}`"
             class="no-underline"

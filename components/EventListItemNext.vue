@@ -2,7 +2,10 @@
   <article class="bg-white shadow-lg event-card">
     <figure id="image" class="overflow-hidden">
       <nuxt-link :to="`/berlin/events/${event.slug}`" class="no-underline"
-        ><img :src="imageURL" class="object-cover w-full h-full"
+        ><img
+          :src="imageURL"
+          class="object-cover w-full h-full"
+          alt="Event's cover image"
       /></nuxt-link>
     </figure>
 
